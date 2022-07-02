@@ -1,8 +1,15 @@
 import 'package:admin/view/admin/screen_admin.dart';
+import 'package:admin/view/category/screen_category.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/space.dart';
-import 'package:admin/view/dashboard/screen_dashboard.dart';
+import 'package:admin/view/coupon/screen_coupon.dart';
+import 'package:admin/view/login/screen_login.dart';
 import 'package:admin/view/login/widget/login_appbar.dart';
+import 'package:admin/view/offer_product/screen_offer_product.dart';
+import 'package:admin/view/order/screen_order.dart';
+import 'package:admin/view/product/screen_product.dart';
+import 'package:admin/view/report/screen_report.dart';
+import 'package:admin/view/widget/action_button.dart';
 import 'package:admin/view/widget/my_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,9 +29,7 @@ Column drawerLists() {
         icon: Icons.dashboard,
         title: 'Dashboard',
         onTap: () {
-          Get.to(
-            const ScreenDashboard(),
-          );
+          Get.back();
         },
       ),
       MyTile(
@@ -37,39 +42,69 @@ Column drawerLists() {
           }),
       MyTile(
         icon: Icons.production_quantity_limits_sharp,
-        title: 'All Product',
-        onTap: () {},
+        title: 'Product',
+        onTap: () {
+          Get.to(const ScreenProduct());
+        },
       ),
       MyTile(
         icon: Icons.category_outlined,
-        title: 'All Category',
-        onTap: () {},
+        title: 'Category',
+        onTap: () {
+          Get.to(const ScreenCategory());
+        },
       ),
       MyTile(
         icon: Icons.local_shipping,
-        title: 'All Order',
-        onTap: () {},
+        title: 'Order',
+        onTap: () {
+          Get.to(const ScreenOrder());
+        },
       ),
       MyTile(
         icon: Icons.free_cancellation,
         title: 'Product Offer',
-        onTap: () {},
+        onTap: () {
+          Get.to(const ScreenOfferProduct());
+        },
       ),
       MyTile(
         icon: Icons.local_offer_sharp,
-        title: 'Catogory Offer',
-        onTap: () {},
-      ),
-      MyTile(
-        icon: Icons.star,
         title: 'Coupon',
-        onTap: () {},
+        onTap: () {
+          Get.to(const ScreenCoupon());
+        },
       ),
+      // MyTile(
+      //   icon: Icons.star,
+      //   title: 'Coupon',
+      //   onTap: () {
+      //     Get.to(const ScreenCoupon());
+      //   },
+      // ),
       MyTile(
         icon: Icons.report,
         title: 'Report',
-        onTap: () {},
+        onTap: () {
+          Get.to(const ScreenReport());
+        },
       ),
+      const Spacer(),
+      ActionButton(
+          buttonWidth: size.width,
+          buttonHeight: size.width * .13,
+          text: 'Log Out',
+          radius: 0,
+          buttonColor: kFormColor,
+          onTap: () {
+            Get.defaultDialog(
+                backgroundColor: kBoxColor,
+                buttonColor: kButtonColor,
+                middleText: 'Do you Want to log out',
+                onConfirm: () {},
+                title: 'Are You Sure',
+                onCancel: () {});
+          })
     ],
   );
 }

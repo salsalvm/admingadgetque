@@ -1,4 +1,3 @@
-
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/login/screen_login.dart';
 import 'package:admin/view/widget/divider.dart';
@@ -7,18 +6,18 @@ import 'package:flutter/material.dart';
 
 class GraphScheduled extends StatelessWidget {
   const GraphScheduled({
-    Key? key, required this.title,
+    Key? key,
+    required this.title,
   }) : super(key: key);
-final String title;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-     
       children: [
-         ItemText(
+        ItemText(
           weight: FontWeight.bold,
-          name: title,
+          name: title ,
           fontSize: 22,
           color: kBlackColor,
         ),

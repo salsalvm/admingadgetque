@@ -12,7 +12,6 @@ class EntryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.only(left: 10.0),
       child: MaterialButton(
@@ -23,10 +22,12 @@ class EntryButton extends StatelessWidget {
         minWidth: size.width * 0.83,
         color: kFormColor,
         onPressed: () {
-          Get.to(const ScreenDashboard());
+          Get.to(
+            const ScreenDashboard(),
+          );
         },
         child: const Text(
-          'Log IN',
+          'Log In',
           style: TextStyle(color: kWhiteColor, fontSize: 20),
         ),
       ),

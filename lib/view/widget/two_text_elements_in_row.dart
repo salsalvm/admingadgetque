@@ -1,3 +1,4 @@
+import 'package:admin/view/core/color.dart';
 import 'package:admin/view/widget/item_text.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class TextElementsInRow extends StatelessWidget {
     required this.secondText,
     required this.wieght,
     required this.fontSize,
-    required this.fontColor, this.onTap,
+    required this.fontColor, this.onTap,  this.sColor=kBlackColor,
   }) : super(key: key);
   final String firstText;
   final String secondText;
@@ -17,7 +18,8 @@ class TextElementsInRow extends StatelessWidget {
   final double fontSize;
   final Color fontColor;
   final double paddding;
-  final onTap;
+  final Color sColor;
+  final  onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,7 +36,7 @@ class TextElementsInRow extends StatelessWidget {
               name: secondText,
               weight: wieght,
               fontSize: fontSize,
-              color: fontColor),
+              color: sColor,),
         ),
       ],
     );

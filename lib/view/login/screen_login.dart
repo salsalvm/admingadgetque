@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 late Size size;
 
 class ScreenLogin extends StatelessWidget {
- const ScreenLogin({Key? key}) : super(key: key);
+  const ScreenLogin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,9 @@ class ScreenLogin extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            BackgroundImage(image: 'asset/admin_background.png'),
+            BackgroundImage(
+              image: 'asset/admin_background.png',
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
@@ -42,8 +44,11 @@ class ScreenLogin extends StatelessWidget {
                   FormFields(
                       name: 'Password',
                       color: kFormColor,
-                      inputTextColor: kWhiteColor),kHeigt5,
-                  const Center(child: EntryButton()),
+                      inputTextColor: kWhiteColor),
+                  kHeigt5,
+                  const Center(
+                    child: EntryButton(),
+                  ),
                 ],
               ),
             ),

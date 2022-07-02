@@ -9,19 +9,19 @@ class FormFields extends StatelessWidget {
     required this.color,
     this.size = 22,
     this.inputTextColor,
-    this.fontSize,
+   
     this.textColor = kGreyColor,
   }) : super(key: key);
   final String name;
   final Color color;
   final Color textColor;
   final double size;
-  final double? fontSize;
+  // final double? fontSize;
   final Color? inputTextColor;
   @override
   Widget build(BuildContext context) {
     return CupertinoTextFormFieldRow(
-      style: TextStyle(color: inputTextColor, fontSize: fontSize),
+      style: TextStyle(color: inputTextColor, ),
       placeholder: '  $name...',
       placeholderStyle: TextStyle(
         color: textColor,

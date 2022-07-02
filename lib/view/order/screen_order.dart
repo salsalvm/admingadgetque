@@ -1,10 +1,10 @@
-import 'package:admin/view/admin/widget/admins_lists.dart';
 import 'package:admin/view/core/space.dart';
+import 'package:admin/view/order/widget/order_list.dart';
 import 'package:admin/view/widget/main_appbar.dart';
 import 'package:flutter/material.dart';
 
-class ScreenAdmin extends StatelessWidget {
-  const ScreenAdmin({Key? key}) : super(key: key);
+class ScreenOrder extends StatelessWidget {
+  const ScreenOrder({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +12,16 @@ class ScreenAdmin extends StatelessWidget {
       // backgroundColor: kBoxColor,
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(55),
-        child: MainAppbar(title: 'Admin'),
+        child: MainAppbar(title: 'Order'),
       ),
       body: SafeArea(
-          child: ListView(
-        children: const [
-          kHeigt5,
-          AdminsList(),
-        ],
-      )),
+        child: ListView(
+          children: const [
+            kHeigt5,
+            OrderList(),
+          ],
+        ),
+      ),
     );
   }
 }
