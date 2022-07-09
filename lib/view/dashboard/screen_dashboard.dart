@@ -1,10 +1,9 @@
-import 'dart:io';
 
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/dashboard/widget/dashboard_log.dart';
 import 'package:admin/view/dashboard/widget/graph_schedule.dart';
-import 'package:admin/view/widget/drawer/functions.dart';
+import 'package:admin/view/widget/drawer/drawer.dart';
 import 'package:flutter/material.dart';
 
 class ScreenDashboard extends StatelessWidget {
@@ -44,9 +43,6 @@ class ScreenDashboard extends StatelessWidget {
             ),
           ),
         ),
-        drawer: Drawer(
-          backgroundColor: kBlackColor,
-          child: drawerLists(),
-        ));
+        drawer: DrawerList());
   }
 }

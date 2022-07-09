@@ -1,5 +1,5 @@
 import 'package:admin/view/core/space.dart';
-import 'package:admin/view/login/screen_login.dart';
+import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/offer_product/widget/add_offer.dart';
 import 'package:admin/view/offer_product/widget/product_offer.dart';
 import 'package:admin/view/widget/action_button.dart';

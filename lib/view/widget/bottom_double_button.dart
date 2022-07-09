@@ -1,9 +1,7 @@
 import 'package:admin/view/core/color.dart';
-import 'package:admin/view/login/screen_login.dart';
+import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/widget/action_button.dart';
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
 
 class BottomDoubleButton extends StatelessWidget {
   const BottomDoubleButton({

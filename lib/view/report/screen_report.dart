@@ -1,6 +1,6 @@
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/space.dart';
-import 'package:admin/view/login/screen_login.dart';
+import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/report/widget/graph_report.dart';
 import 'package:admin/view/widget/divider.dart';
 import 'package:admin/view/widget/item_text.dart';

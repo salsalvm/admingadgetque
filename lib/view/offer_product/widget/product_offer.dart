@@ -1,9 +1,8 @@
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';
-import 'package:admin/view/login/screen_login.dart';
+import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/widget/item_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';

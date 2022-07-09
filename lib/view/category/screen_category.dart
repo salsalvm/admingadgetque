@@ -1,7 +1,7 @@
 import 'package:admin/view/category/widget/add_category.dart';
 import 'package:admin/view/category/widget/category_list.dart';
 import 'package:admin/view/core/space.dart';
-import 'package:admin/view/login/screen_login.dart';
+import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/widget/action_button.dart';
 import 'package:admin/view/widget/main_appbar.dart';
 import 'package:flutter/material.dart';

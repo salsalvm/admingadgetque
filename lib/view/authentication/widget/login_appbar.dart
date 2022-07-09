@@ -1,4 +1,4 @@
-import 'package:admin/view/login/screen_login.dart';
+import 'package:admin/view/authentication/screen_login.dart';
 import 'package:flutter/material.dart';
 
 class EntryAppbar extends StatelessWidget {
@@ -11,7 +11,6 @@ class EntryAppbar extends StatelessWidget {
   final textColor;
   @override
   Widget build(BuildContext context) {
-    print(size.width * 0.4);
     return Row(
       children: [
         // Image.network(
