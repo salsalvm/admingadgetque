@@ -54,12 +54,16 @@ class AddOffer extends StatelessWidget {
                   )
                 ],
               ),
-              FormFields(
+              FormFields(validator: (data) {
+                
+              },
                   size: 18,
                   name: 'product name',
                   color: kGreyColor,
                   textColor: kBlack54Color),
-              FormFields(
+              FormFields(validator: (data) {
+                
+              },
                   size: 18,
                   name: 'offer percentage',
                   color: kGreyColor,

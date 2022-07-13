@@ -22,12 +22,16 @@ class AddCoupon extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              FormFields(
+              FormFields(validator: (data) {
+                
+              },
                   size: 18,
                   name: 'coupon code',
                   color: kGreyColor,
                   textColor: kBlack54Color),
-              FormFields(
+              FormFields(validator: (data) {
+                
+              },
                   size: 18,
                   name: 'coupon percentage',
                   color: kGreyColor,

@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,16 +15,16 @@ class FormFields extends StatelessWidget {
       this.obscureText = false,
       this.icon,
       this.controller,
-      this.validator})
+    required  this.validator})
       : super(key: key);
   final String name;
-  final obscureText;
+  final  obscureText;
   final Color color;
   final Color textColor;
   final double? size;
   final icon;
   // final double? fontSize;
-  final validator;
+  final FunctionStringCallback validator;
   final Color? inputTextColor;
   final controller;
   @override

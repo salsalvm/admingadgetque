@@ -13,17 +13,17 @@ class BottomDoubleButton extends StatelessWidget {
   }) : super(key: key);
   final String secondText;
   final String firstText;
-  final firstOnTap;
+  final VoidCallback firstOnTap;
 
-  final secondOnTap;
+  final VoidCallback secondOnTap;
   @override
   Widget build(BuildContext context) {
-   
     return Row(
       children: [
         ActionButton(
           radius: 0,
           buttonColor: kGreyColor,
+          fontColor: kBlackColor,
           buttonWidth: size.width * .5,
           buttonHeight: size.width * 0.14,
           text: firstText,
@@ -31,11 +31,11 @@ class BottomDoubleButton extends StatelessWidget {
         ),
         ActionButton(
             radius: 0,
-            buttonColor: Colors.orange,
+            buttonColor: kBoxColor,
             buttonWidth: size.width * .5,
             buttonHeight: size.width * 0.14,
             text: secondText,
-            fontColor: kWhiteColor,
+            fontColor: kBlackColor,
             onTap: secondOnTap)
       ],
     );

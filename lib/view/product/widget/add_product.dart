@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:admin/view/core/color.dart';
-import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';
-import 'package:admin/view/authentication/screen_login.dart';
-import 'package:admin/view/widget/action_button.dart';
+import 'package:admin/view/product/widget/addProduct_image.dart';
+import 'package:admin/view/widget/bottom_double_button.dart';
 import 'package:admin/view/widget/form_field.dart';
+import 'package:admin/view/widget/main_appbar.dart';
 import 'package:flutter/material.dart';
 
 class AddProduct extends StatelessWidget {
@@ -15,106 +15,97 @@ class AddProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-      child: Dialog(
-        backgroundColor: Colors.transparent,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                // alignment: AlignmentDirectional.bottomCenter,
-                children: [
-                  Container(
-                    height: 260,
-                    width: 280,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                        ),
-                        image: DecorationImage(
-                            filterQuality: FilterQuality.high,
-                            fit: BoxFit.cover,
-                            image: AssetImage('asset/mobile.png'))),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 280,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10),
-                        ),
-                        color: kBoxColor),
-                    child: const Icon(
-                      Icons.camera_alt_outlined,
-                      color: kGreen,
+    return Scaffold(
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: MainAppbar(
+            title: 'Add Product',
+          )),
+      backgroundColor: Colors.transparent,
+      body: SafeArea(
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: ListView(
+                  children: [
+                    Row(
+                      children: [
+                        // <<<<<<<<<<<<<<<<<<main image>>>>>>>>>>>>>>>>>>>>>
+                        AddProductImage(
+                            onTap: () {},
+                            heightI: 230,
+                            widthI: 215,
+                            widthC: 215),
+                        const Spacer(),
+                        Column(
+                          children: [
+                            // <<<<<<<<<<<<<<<<<<first image>>>>>>>>>>>>>>>>>>>>>
+                            AddProductImage(
+                                onTap: () {},
+                                heightI: 85,
+                                widthI: 130,
+                                widthC: 130),
+                            kHeigt10,
+                            // <<<<<<<<<<<<<<<<<<second image>>>>>>>>>>>>>>>>>>>>>
+                            AddProductImage(
+                                onTap: () {},
+                                heightI: 85,
+                                widthI: 130,
+                                widthC: 130),
+                          ],
+                        )
+                      ],
                     ),
-                  )
-                ],
+                    kHeigt30,
+                    FormFields(
+                        validator: (data) {},
+                        icon: Icons.abc,
+                        size: 18,
+                        name: 'product name',
+                        color: kFormColor,
+                        textColor: kBlack54Color),
+                    FormFields(
+                        validator: (data) {},
+                        icon: Icons.abc,
+                        size: 18,
+                        name: 'discription',
+                        color: kFormColor,
+                        textColor: kBlack54Color),
+                    FormFields(
+                        validator: (data) {},
+                        icon: Icons.currency_rupee,
+                        size: 18,
+                        name: 'offer price',
+                        color: kFormColor,
+                        textColor: kBlack54Color),
+                    FormFields(
+                        validator: (data) {},
+                        icon: Icons.currency_rupee,
+                        size: 18,
+                        name: 'price',
+                        color: kFormColor,
+                        textColor: kBlack54Color),
+                    FormFields(
+                        validator: (data) {},
+                        icon: Icons.category,
+                        size: 18,
+                        name: 'catogoy',
+                        color: kFormColor,
+                        textColor: kBlack54Color),
+                  ],
+                ),
               ),
-              kHeigt10,
-              FormFields(
-                  icon: Icons.abc,
-                  size: 18,
-                  name: 'product name',
-                  color: kFormColor,
-                  textColor: kBlack54Color),
-              FormFields(
-                  icon: Icons.abc,
-                  size: 18,
-                  name: 'discription',
-                  color: kFormColor,
-                  textColor: kBlack54Color),
-              FormFields(
-                  icon: Icons.currency_rupee,
-                  size: 18,
-                  name: 'price',
-                  color: kFormColor,
-                  textColor: kBlack54Color),
-              FormFields(
-                  icon: Icons.currency_rupee,
-                  size: 18,
-                  name: 'offer price',
-                  color: kFormColor,
-                  textColor: kBlack54Color),
-              FormFields(
-                  icon: Icons.currency_rupee,
-                  size: 18,
-                  name: 'delivery charge',
-                  color: kFormColor,
-                  textColor: kBlack54Color),
-              FormFields(
-                  icon: Icons.category,
-                  size: 18,
-                  name: 'catogoy',
-                  color: kFormColor,
-                  textColor: kBlack54Color),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ActionButton(
-                      buttonWidth: size.width * .38,
-                      fontSize: 20,
-                      buttonHeight: 40,
-                      text: 'Cancel',
-                      buttonColor: kFormColor,
-                      fontColor: kWhiteColor,
-                      onTap: () {}),
-                  ActionButton(
-                      buttonWidth: size.width * .38,
-                      buttonHeight: 40,
-                      fontColor: kWhiteColor,
-                      fontSize: 20,
-                      text: 'Add',
-                      buttonColor: kFormColor,
-                      onTap: () {}),
-                ],
-              ),
-            ],
-          ),
+            ),
+            BottomDoubleButton(
+                secondText: 'Add',
+                firstText: 'Cancel',
+                firstOnTap: () {},
+                secondOnTap: () {})
+          ],
         ),
       ),
     );

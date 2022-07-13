@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MainAppbar extends StatelessWidget {
-  const MainAppbar({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
+  const MainAppbar({Key? key, required this.title, this.color = kBoxColor})
+      : super(key: key);
   final String title;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -18,7 +17,7 @@ class MainAppbar extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back)),
       foregroundColor: kBlackColor,
-      backgroundColor: kBoxColor,
+      backgroundColor: color,
       centerTitle: true,
       title: Text(
         title,

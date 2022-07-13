@@ -23,11 +23,9 @@ class AddCategory extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
-                // alignment: AlignmentDirectional.bottomCenter,
                 children: [
                   Container(
                     height: 260,
-                    width: 280,
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
@@ -39,16 +37,17 @@ class AddCategory extends StatelessWidget {
                             image: AssetImage('asset/mobile.png'))),
                   ),
                   Container(
-                    height: 25,
-                    width: 280,
+                    // height: 25,
+                    width: double.infinity,
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10),
                         ),
                         color: kBoxColor),
-                    child: const Icon(
-                      Icons.camera_alt_outlined,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.camera_alt_outlined),
                       color: kGreen,
                     ),
                   )
@@ -56,6 +55,7 @@ class AddCategory extends StatelessWidget {
               ),
               kHeigt10,
               FormFields(
+                  validator: (data) {},
                   size: 18,
                   icon: Icons.category,
                   name: 'category name',
