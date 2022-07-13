@@ -1,5 +1,4 @@
-
-import 'package:admin/controller/authentication/error_text.dart';
+import 'package:admin/view/authentication/widget/error_text.dart';
 import 'package:admin/controller/authentication/login_controller.dart';
 import 'package:admin/controller/authentication/validation_controller.dart';
 import 'package:admin/view/core/color.dart';
@@ -45,6 +44,9 @@ class ScreenLogin extends StatelessWidget {
                   FormFields(
                       controller: mailController,
                       icon: Icons.mail,
+                      validator: (mail) {
+                        validController.mailValidation(mail);
+                      },
                       name: 'Email',
                       color: kFormColor,
                       inputTextColor: kWhiteColor),
@@ -56,6 +58,9 @@ class ScreenLogin extends StatelessWidget {
                   ),
                   kHeigt10,
                   FormFields(
+                      validator: (password) {
+                        validController.passwordValidation(password);
+                      },
                       controller: passwordController,
                       icon: Icons.lock,
                       obscureText: true,
@@ -65,7 +70,7 @@ class ScreenLogin extends StatelessWidget {
                       inputTextColor: kWhiteColor),
                   Obx(
                     () => ErrorText(
-                        errorText: 'minimum enter 6 letters',
+                        errorText: 'minimum enter 4 letters',
                         isVisible: validController.pass.value),
                   ),
                   kHeigt10,
@@ -82,6 +87,15 @@ class ScreenLogin extends StatelessWidget {
                       style: TextStyle(color: kWhiteColor, fontSize: 22),
                     ),
                   ),
+                  kHeigt50,
+                  Obx(
+                    () => Visibility(
+                      visible: loginController.isLoading.value,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -92,14 +106,17 @@ class ScreenLogin extends StatelessWidget {
   }
 
   void loginButtonPressed() {
-    if (mailController.text == 'ameen123@gmail.com' &&
-        passwordController.text == 'asdf') {
-      loginController.loginAdmin(
-        mailController.text.trim(),
-        passwordController.text.trim(),
-      );
-    } else {
+    final mail = mailController.text.trim();
+    final password = passwordController.text.trim();
+    if (mail.isEmpty || password.isEmpty) {
+      Get.snackbar(
+          snackPosition: SnackPosition.BOTTOM,
+          'fill the field',
+          'Every Fields Are Required',
+          colorText: kredColor);
       return;
+    } else {
+      loginController.loginAdmin(mail, password);
     }
   }
 

@@ -36,7 +36,9 @@ class ScreenProduct extends StatelessWidget {
           buttonHeight: size.width * .13,
           text: 'Add Product',
           onTap: () {
-            Get.dialog(const AddProduct(),);
+            Get.dialog(
+              const AddProduct(),
+            );
           },
         )
       ],

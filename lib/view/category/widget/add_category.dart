@@ -26,8 +26,8 @@ class AddCategory extends StatelessWidget {
                 // alignment: AlignmentDirectional.bottomCenter,
                 children: [
                   Container(
-                    height: 200,
-                    width: 200,
+                    height: 260,
+                    width: 280,
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
@@ -40,7 +40,7 @@ class AddCategory extends StatelessWidget {
                   ),
                   Container(
                     height: 25,
-                    width: 200,
+                    width: 280,
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),
@@ -54,29 +54,30 @@ class AddCategory extends StatelessWidget {
                   )
                 ],
               ),
+              kHeigt10,
               FormFields(
                   size: 18,
+                  icon: Icons.category,
                   name: 'category name',
                   color: kGreyColor,
                   textColor: kBlack54Color),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  kWidth5,
                   ActionButton(
-                      buttonWidth: size.width * .35,
+                      buttonWidth: size.width * .38,
                       fontSize: 20,
                       buttonHeight: 40,
-                      text: 'CANCEL',
+                      text: 'Cancel',
                       buttonColor: kFormColor,
                       fontColor: kWhiteColor,
                       onTap: () {}),
                   ActionButton(
-                      buttonWidth: size.width * .35,
+                      buttonWidth: size.width * .38,
                       buttonHeight: 40,
                       fontColor: kWhiteColor,
                       fontSize: 20,
-                      text: 'ADD',
+                      text: 'Add',
                       buttonColor: kFormColor,
                       onTap: () {}),
                 ],

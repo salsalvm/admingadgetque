@@ -27,22 +27,22 @@ class AddProduct extends StatelessWidget {
                 // alignment: AlignmentDirectional.bottomCenter,
                 children: [
                   Container(
-                    height: 180,
-                    width: 160,
-                    decoration:const BoxDecoration(
-                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
+                    height: 260,
+                    width: 280,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
                         ),
-                        image:  DecorationImage(
+                        image: DecorationImage(
                             filterQuality: FilterQuality.high,
                             fit: BoxFit.cover,
                             image: AssetImage('asset/mobile.png'))),
                   ),
                   Container(
                     height: 25,
-                    width: 160,
-                    decoration:const BoxDecoration(
+                    width: 280,
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10),
@@ -55,46 +55,60 @@ class AddProduct extends StatelessWidget {
                   )
                 ],
               ),
-              FormFields(size: 18,
+              kHeigt10,
+              FormFields(
+                  icon: Icons.abc,
+                  size: 18,
                   name: 'product name',
-                  color: kGreyColor,
+                  color: kFormColor,
                   textColor: kBlack54Color),
-              FormFields(size: 18,
+              FormFields(
+                  icon: Icons.abc,
+                  size: 18,
                   name: 'discription',
-                  color: kGreyColor,
+                  color: kFormColor,
                   textColor: kBlack54Color),
-              FormFields(size: 18,
-                  name: 'price', color: kGreyColor, textColor: kBlack54Color),
-              FormFields(size: 18,
+              FormFields(
+                  icon: Icons.currency_rupee,
+                  size: 18,
+                  name: 'price',
+                  color: kFormColor,
+                  textColor: kBlack54Color),
+              FormFields(
+                  icon: Icons.currency_rupee,
+                  size: 18,
                   name: 'offer price',
-                  color: kGreyColor,
+                  color: kFormColor,
                   textColor: kBlack54Color),
-              FormFields(size: 18,
+              FormFields(
+                  icon: Icons.currency_rupee,
+                  size: 18,
                   name: 'delivery charge',
-                  color: kGreyColor,
+                  color: kFormColor,
                   textColor: kBlack54Color),
-              FormFields(size: 18,
-                  name: 'catogoy', color: kGreyColor, textColor: kBlack54Color),
+              FormFields(
+                  icon: Icons.category,
+                  size: 18,
+                  name: 'catogoy',
+                  color: kFormColor,
+                  textColor: kBlack54Color),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  kWidth5,
                   ActionButton(
-                      buttonWidth: size.width * .35,
+                      buttonWidth: size.width * .38,
                       fontSize: 20,
                       buttonHeight: 40,
-                      text: 'CANCEL',
+                      text: 'Cancel',
                       buttonColor: kFormColor,
                       fontColor: kWhiteColor,
-                      onTap: () {
-                        
-                      }),
+                      onTap: () {}),
                   ActionButton(
-                      buttonWidth: size.width * .35,
+                      buttonWidth: size.width * .38,
                       buttonHeight: 40,
                       fontColor: kWhiteColor,
                       fontSize: 20,
-                      text: 'ADD',
+                      text: 'Add',
                       buttonColor: kFormColor,
                       onTap: () {}),
                 ],
