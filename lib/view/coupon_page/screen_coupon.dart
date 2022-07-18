@@ -1,14 +1,13 @@
 import 'package:admin/view/core/space.dart';
+import 'package:admin/view/coupon_page/widget/add_coupon.dart';
+import 'package:admin/view/coupon_page/widget/coupon_list.dart';
 import 'package:admin/view/authentication/screen_login.dart';
-import 'package:admin/view/product/widget/add_product.dart';
-import 'package:admin/view/product/widget/product_grid.dart';
 import 'package:admin/view/widget/action_button.dart';
 import 'package:admin/view/widget/main_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-class ScreenProduct extends StatelessWidget {
-  const ScreenProduct({Key? key}) : super(key: key);
+class ScreenCoupon extends StatelessWidget {
+  const ScreenCoupon({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +15,15 @@ class ScreenProduct extends StatelessWidget {
       alignment: AlignmentDirectional.bottomCenter,
       children: [
         Scaffold(
-          // backgroundColor: kBoxColor,
           appBar: const PreferredSize(
             preferredSize: Size.fromHeight(55),
-            child: MainAppbar(title: 'Product'),
+            child: MainAppbar(title: 'Coupon'),
           ),
           body: SafeArea(
             child: ListView(
               children: const [
                 kHeigt5,
-                ProductGrid(),
+                CouponList(),
               ],
             ),
           ),
@@ -34,11 +32,9 @@ class ScreenProduct extends StatelessWidget {
           buttonWidth: size.width,
           radius: 0,
           buttonHeight: size.width * .13,
-          text: 'Add Product',
+          text: 'Add New Coupon',
           onTap: () {
-            Get.dialog(
-              const AddProduct(),
-            );
+            Get.dialog(const AddCoupon());
           },
         )
       ],

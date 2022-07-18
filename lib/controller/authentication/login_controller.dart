@@ -4,7 +4,7 @@ import 'package:admin/model/authentication/login_model.dart';
 import 'package:admin/model/services/auth_services.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/core/color.dart';
-import 'package:admin/view/dashboard/screen_dashboard.dart';
+import 'package:admin/view/dashboard_page/screen_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -19,9 +19,8 @@ class LoginController extends GetxController {
         'email': mail,
         'password': password,
       };
-      log('<<<<<<<<$adminData>>>>>>>>>');
 
-      final response = await ApiServices().checkLogin(adminData);
+      final response = await AuthServicesEndPoint().checkLogin(adminData);
 
       try {
         if (response!.statusCode == 200 || response.statusCode == 201) {
@@ -46,6 +45,7 @@ class LoginController extends GetxController {
           );
         }
       } catch (e) {
+        isLoading(false);
         Get.snackbar(
           'Login Error',
           'you are a fake admin',
@@ -56,6 +56,7 @@ class LoginController extends GetxController {
         isLoading(false);
       }
     } else {
+      isLoading(false);
       Get.snackbar(
           snackPosition: SnackPosition.BOTTOM,
           'Login Error',
@@ -67,7 +68,7 @@ class LoginController extends GetxController {
 
   logoutAdmin() async {
     try {
-      final response = await ApiServices().checkLogout();
+      final response = await AuthServicesEndPoint().checkLogout();
       if (response!.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar(
           'signout successfully',

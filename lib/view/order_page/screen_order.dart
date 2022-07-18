@@ -1,5 +1,5 @@
 import 'package:admin/view/core/space.dart';
-import 'package:admin/view/order/widget/order_list.dart';
+import 'package:admin/view/order_page/widget/order_list.dart';
 import 'package:admin/view/widget/main_appbar.dart';
 import 'package:flutter/material.dart';
 

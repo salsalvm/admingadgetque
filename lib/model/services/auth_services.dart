@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
 
-class ApiServices {
+class AuthServicesEndPoint {
   final dio = Dio(
     BaseOptions(
         baseUrl: 'http://10.0.2.2:3000/admin/',

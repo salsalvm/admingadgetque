@@ -33,6 +33,7 @@ dependencies:
     sdk: flutter
   flutter_slidable: ^1.3.0
   get: ^4.6.5
+  image_picker: ^0.8.5+3
   shared_preferences: ^2.0.15
 
 dev_dependencies:

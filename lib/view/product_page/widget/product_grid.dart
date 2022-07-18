@@ -15,7 +15,7 @@ class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height*.838,
+      height: size.height * .838,
       child: GetBuilder<ProductController>(
         init: ProductController(),
         builder: (controller) => controller.product == null
@@ -40,6 +40,20 @@ class ProductGrid extends StatelessWidget {
                         padding: const EdgeInsets.all(5.0),
                         child: Column(
                           children: [
+                            // controller.product![index].id!.isEmpty
+                            //     ? Container(
+                            //         width: size.width * .5,
+                            //         height: size.width * .5,
+                            //         decoration: BoxDecoration(
+                            //           borderRadius: kRAdius10,
+                            //           image: DecorationImage(
+                            //             fit: BoxFit.cover,
+                            //             image: NetworkImage(
+                            //                 'hhttp://localhost:3000/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg'),
+                            //           ),
+                            //         ),
+                            //       )
+                            //     :
                             Container(
                               width: size.width * .5,
                               height: size.width * .5,
@@ -48,7 +62,8 @@ class ProductGrid extends StatelessWidget {
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: NetworkImage(
-                                    'http://54.176.6.232/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
+                                    //  'http://34.227.15.1/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
+                                    'http://10.0.2.2:3000/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
                                   ),
                                 ),
                               ),
@@ -58,7 +73,7 @@ class ProductGrid extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ItemText(
-                                    name: controller.product![index].name
+                                    name: controller.product![index].name!
                                         .toUpperCase(),
                                     weight: FontWeight.bold,
                                     fontSize: 18,
@@ -67,14 +82,14 @@ class ProductGrid extends StatelessWidget {
                                   child: ItemText(
                                       lines: 2,
                                       name: controller
-                                          .product![index].description,
+                                          .product![index].description!,
                                       weight: FontWeight.w400,
                                       fontSize: 16,
                                       color: kBlack54Color),
                                 ),
                                 // kHeigt5,
                                 ItemText(
-                                    name: controller.product![index].category,
+                                    name: controller.product![index].category!,
                                     weight: FontWeight.w500,
                                     fontSize: 18,
                                     color: kBlackColor),
@@ -82,7 +97,7 @@ class ProductGrid extends StatelessWidget {
                                   children: [
                                     ItemText(
                                         name: controller
-                                            .product![index].originalPrice,
+                                            .product![index].originalPrice!,
                                         weight: FontWeight.bold,
                                         fontSize: 20,
                                         color: kGreenColor),
@@ -91,7 +106,7 @@ class ProductGrid extends StatelessWidget {
                                       padding: const EdgeInsets.only(top: 3.0),
                                       child: ItemText(
                                           name:
-                                              controller.product![index].price,
+                                              controller.product![index].price!,
                                           weight: FontWeight.normal,
                                           strike: TextDecoration.lineThrough,
                                           fontSize: 18,

@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/radius.dart';
@@ -24,7 +23,7 @@ class FormFields extends StatelessWidget {
   final double? size;
   final icon;
   // final double? fontSize;
-  final FunctionStringCallback validator;
+  final  validator;
   final Color? inputTextColor;
   final controller;
   @override

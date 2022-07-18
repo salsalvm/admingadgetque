@@ -14,7 +14,7 @@ class SuperAdmin extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home:  ScreenLogin(),
+        home: ScreenLogin(),
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
             color: kWhiteColor,

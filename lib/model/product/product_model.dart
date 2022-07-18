@@ -2,7 +2,6 @@
 //
 //     final productDatasModel = productDatasModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 ProductDatasModel productDatasModelFromJson(String str) =>
@@ -44,13 +43,13 @@ class Product {
     required this.imageId,
   });
 
-  String id;
-  String name;
-  String category;
-  String originalPrice;
-  String price;
-  String description;
-  String imageId;
+  String? id;
+  String? name;
+  String? category;
+  String? originalPrice;
+  String? price;
+  String? description;
+  String? imageId;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["_id"],

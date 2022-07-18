@@ -1,5 +1,5 @@
 import 'package:admin/view/core/color.dart';
-import 'package:admin/view/dashboard/screen_dashboard.dart';
+import 'package:admin/view/dashboard_page/screen_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
