@@ -1,6 +1,6 @@
 import 'package:admin/view/authentication/widget/error_text.dart';
-import 'package:admin/controller/authentication/login_controller.dart';
-import 'package:admin/controller/authentication/validation_controller.dart';
+import 'package:admin/controller/login_controller.dart';
+import 'package:admin/controller/validation_controller.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';

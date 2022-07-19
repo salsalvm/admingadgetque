@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:admin/view/core/url.dart';
 import 'package:dio/dio.dart';
@@ -18,13 +19,17 @@ class ProductServicesEndPoint {
   }
 
 //>>>>>>>>>>>>>>>>.add product<<<<<<<<<<<<<<<<<//
-  Future<Response<dynamic>?> addProduct(productDatas) async {
-    final response = await dio.post(
-      'add-product',
-      data: jsonEncode(
-        productDatas,
-      ),
-    );
-    return response;
+  Future<Response<dynamic>?> addProduct(
+      Map<String, String> requestHeadder, FormData formData) async {
+    // log(formData.toString());
+    // log(requestHeadder.toString());
+    try {
+      final response = await dio.post('add-product',
+          data: jsonEncode(formData),
+          options: Options(headers: requestHeadder));
+      return response;
+    } catch (e) {
+      log(e.toString());
+    }return null;
   }
 }

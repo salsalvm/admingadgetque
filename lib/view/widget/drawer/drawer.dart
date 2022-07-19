@@ -1,4 +1,4 @@
-import 'package:admin/controller/authentication/login_controller.dart';
+import 'package:admin/controller/login_controller.dart';
 import 'package:admin/view/admin_page/screen_admin.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/authentication/widget/login_appbar.dart';

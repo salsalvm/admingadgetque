@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:ui';
-import 'package:admin/controller/product/product_controller.dart';
+import 'package:admin/controller/product_controller.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/product_page/screen_product.dart';

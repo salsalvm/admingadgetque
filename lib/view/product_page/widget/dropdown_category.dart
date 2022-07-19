@@ -1,4 +1,4 @@
-import 'package:admin/controller/category/category_controller.dart';
+import 'package:admin/controller/category_controller.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/radius.dart';

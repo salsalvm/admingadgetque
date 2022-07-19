@@ -1,4 +1,4 @@
-import 'package:admin/controller/product/product_controller.dart';
+import 'package:admin/controller/product_controller.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';
