@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'dart:io';
 
+import 'package:admin/model/add_product_model.dart';
 import 'package:admin/model/product_model.dart';
 import 'package:admin/model/services/product_services.dart';
 import 'package:admin/view/core/color.dart';
@@ -18,8 +19,8 @@ import 'package:image_picker/image_picker.dart';
 class ProductController extends GetxController {
   final pickImage = ImagePicker();
   File? mainImage;
-  File? fImage;
-  File? sImage;
+  File? firstImage;
+  File? secondImage;
   var isMainDisplay = true.obs;
   var isFDisplay = true.obs;
   var isSDisplay = true.obs;
@@ -43,8 +44,8 @@ class ProductController extends GetxController {
 
 //>>>>>>>>>>>>>>>pick images<<<<<<<<<<<<<<<<<<<<<<<//
   pickMainImages() async {
-    final XFile? pickedFImage =
-        await pickImage.pickImage(source: ImageSource.gallery);
+    final XFile? pickedFImage = await pickImage.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
     mainImage = File(pickedFImage!.path);
 
     // update();
@@ -53,17 +54,17 @@ class ProductController extends GetxController {
   }
 
   pickFImages() async {
-    final XFile? pickedFImage =
-        await pickImage.pickImage(source: ImageSource.gallery);
-    fImage = File(pickedFImage!.path);
+    final XFile? pickedFImage = await pickImage.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+    firstImage = File(pickedFImage!.path);
     isFDisplay = false.obs;
     update();
   }
 
   pickSImages() async {
-    final XFile? pickedFImage =
-        await pickImage.pickImage(source: ImageSource.gallery);
-    sImage = File(pickedFImage!.path);
+    final XFile? pickedFImage = await pickImage.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+    secondImage = File(pickedFImage!.path);
     isSDisplay = false.obs;
     update();
   }
@@ -74,11 +75,11 @@ class ProductController extends GetxController {
     String fileName2 = productDetails.fImage.path.split('/').last;
     String fileName3 = productDetails.sImage.path.split('/').last;
 
-    final mainImage = MultipartFile.fromFile(productDetails.mainImage.path,
+    final mImage = await MultipartFile.fromFile(productDetails.mainImage.path,
         filename: fileName1, contentType: MediaType('image', 'jpg'));
-    final fImage = MultipartFile.fromFile(productDetails.fImage.path,
+    final fImage = await MultipartFile.fromFile(productDetails.fImage.path,
         filename: fileName2, contentType: MediaType('image', 'jpg'));
-    final sImage = MultipartFile.fromFile(productDetails.sImage.path,
+    final sImage = await MultipartFile.fromFile(productDetails.sImage.path,
         filename: fileName3, contentType: MediaType('image', 'jpg'));
 
     FormData formData = FormData.fromMap({
@@ -87,24 +88,20 @@ class ProductController extends GetxController {
       "Category": productDetails.desc,
       "originalPrice": productDetails.oPrice,
       "Price": productDetails.price,
-      "image1": mainImage,
+      "image1": mImage,
       "image2": fImage,
       "image3": sImage
     });
-    Map<String, String> requestHeadder = {
-      "Content-Type": "multipart/form-data",
-    };
 
     try {
-      log('started'.toString());
-      final response =
-          await ProductServicesEndPoint().addProduct(requestHeadder, formData);
-      log('success'.toString());
-      log(response!.toString());
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final datas = productDatasModelFromJson(response.data);
-        if (datas.admin == true) {
-          log('trueAdmin'.toString());
+      log('started');
+      final response = await ProductServicesEndPoint().addProduct(formData);
+      log('success');
+
+      if (response!.statusCode == 200 || response.statusCode == 201) {
+        final datas = addProductModelFromJson(response.data);
+
+        if (datas.success) {
           Get.snackbar(
             'Product added  ',
             'successfully',
@@ -117,6 +114,7 @@ class ProductController extends GetxController {
       }
     } on DioError catch (e) {
       log(e.toString());
+
       Get.snackbar(
         'Product added failed',
         'some issues occure',

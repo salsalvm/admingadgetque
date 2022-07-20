@@ -14,12 +14,7 @@ class DropdownCategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CategoryController>(
-      init: CategoryController(),
-      builder: (controller) {
-        return controller.categoryNames == null
-            ? const Center(child: CircularProgressIndicator())
-            : Center(
+    return Center(
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   height: size.height * .06,
@@ -27,7 +22,12 @@ class DropdownCategoryList extends StatelessWidget {
                     color: kFormColor,
                     borderRadius: kRAdius10,
                   ),
-                  child: DropdownButton(
+                  child:GetBuilder<CategoryController>(
+      init: CategoryController(),
+      builder: (controller) {
+        return controller.categoryNames == null
+            ? const Center(child: CircularProgressIndicator())
+            :  DropdownButton(
                     itemHeight: 60,
                     isDense: true,
                     iconSize: 30,
@@ -76,10 +76,9 @@ class DropdownCategoryList extends StatelessWidget {
                       selectedvalue = value.toString();
                       controller.update();
                     },
-                  ),
-                ),
+                 
               );
       },
-    );
+    )));
   }
 }

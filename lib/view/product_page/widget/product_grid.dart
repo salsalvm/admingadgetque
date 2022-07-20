@@ -3,7 +3,9 @@ import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/authentication/screen_login.dart';
+import 'package:admin/view/core/url.dart';
 import 'package:admin/view/widget/item_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -54,18 +56,17 @@ class ProductGrid extends StatelessWidget {
                             //         ),
                             //       )
                             //     :
-                            Container(
+                            CachedNetworkImage(
+                              imageUrl:
+                                  '$kImageBaseUrl/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
                               width: size.width * .5,
                               height: size.width * .5,
-                              decoration: BoxDecoration(
-                                borderRadius: kRAdius10,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                    //  'http://34.227.15.1/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
-                                    'http://10.0.2.2:3000/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
-                                  ),
-                                ),
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
+                              errorWidget: (context, str, error) => const Icon(
+                                Icons.error,
+                                color: kGreyColor,
+                                size: 40,
                               ),
                             ),
                             kHeigt5,

@@ -58,7 +58,7 @@ class AddProduct extends StatelessWidget {
                               // <<<<<<<<<<<<<<<<<<first image>>>>>>>>>>>>>>>>>>>>>
                               AddProductImage(
                                   noImage: controller.isFDisplay.value,
-                                  image: controller.fImage ??
+                                  image: controller.firstImage ??
                                       File('asset/mobile.png'),
                                   onTap: () async {
                                     controller.pickFImages();
@@ -70,7 +70,7 @@ class AddProduct extends StatelessWidget {
                               // <<<<<<<<<<<<<<<<<<second image>>>>>>>>>>>>>>>>>>>>>
                               AddProductImage(
                                   noImage: controller.isSDisplay.value,
-                                  image: controller.sImage ??
+                                  image: controller.secondImage ??
                                       File('asset/mobile.png'),
                                   onTap: () async {
                                     controller.pickSImages();
@@ -138,8 +138,8 @@ class AddProduct extends StatelessWidget {
                 final price = priceController.text.trim();
                 final category = selectedvalue.toString();
                 if (name.isEmpty ||
-                    controller.fImage == null ||
-                    controller.sImage == null ||
+                    controller.firstImage == null ||
+                    controller.secondImage == null ||
                     controller.mainImage == null ||
                     desc.isEmpty ||
                     oPrice.isEmpty ||
@@ -157,8 +157,8 @@ class AddProduct extends StatelessWidget {
                     oPrice: oPrice,
                     price: price,
                     mainImage: controller.mainImage!,
-                    fImage: controller.fImage!,
-                    sImage: controller.sImage!,
+                    fImage: controller.firstImage!,
+                    sImage: controller.secondImage!,
                     name: name,
                   );
 
