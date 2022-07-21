@@ -1,7 +1,7 @@
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/product_page/widget/add_product.dart';
-import 'package:admin/view/product_page/widget/product_grid.dart';
+import 'package:admin/view/product_page/widget/grid_product.dart';
 import 'package:admin/view/widget/action_button.dart';
 import 'package:admin/view/widget/main_appbar.dart';
 import 'package:flutter/material.dart';

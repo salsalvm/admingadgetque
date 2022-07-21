@@ -4,7 +4,7 @@ import 'package:admin/controller/product_controller.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/product_page/screen_product.dart';
-import 'package:admin/view/product_page/widget/addProduct_image.dart';
+import 'package:admin/view/product_page/widget/image_add_product.dart';
 import 'package:admin/view/product_page/widget/dropdown_category.dart';
 import 'package:admin/view/widget/bottom_double_button.dart';
 import 'package:admin/view/widget/form_field.dart';

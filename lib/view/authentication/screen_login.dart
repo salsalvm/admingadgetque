@@ -37,7 +37,7 @@ class ScreenLogin extends StatelessWidget {
                   ),
                   kHeigt100,
                   const Text(
-                    'Hey Cheife,\nLogin Now.',
+                    'Hey Chief,\nLogin Now.',
                     style: TextStyle(color: kWhiteColor, fontSize: 28),
                   ),
                   kHeigt150,

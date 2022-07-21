@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:admin/model/add_product_model.dart';
+import 'package:admin/model/delete_product.dart';
 import 'package:admin/model/product_model.dart';
 import 'package:admin/model/services/product_services.dart';
 import 'package:admin/view/core/color.dart';
@@ -42,33 +43,6 @@ class ProductController extends GetxController {
     }
   }
 
-//>>>>>>>>>>>>>>>pick images<<<<<<<<<<<<<<<<<<<<<<<//
-  pickMainImages() async {
-    final XFile? pickedFImage = await pickImage.pickImage(
-        source: ImageSource.gallery, imageQuality: 50);
-    mainImage = File(pickedFImage!.path);
-
-    // update();
-    isMainDisplay = false.obs;
-    update();
-  }
-
-  pickFImages() async {
-    final XFile? pickedFImage = await pickImage.pickImage(
-        source: ImageSource.gallery, imageQuality: 50);
-    firstImage = File(pickedFImage!.path);
-    isFDisplay = false.obs;
-    update();
-  }
-
-  pickSImages() async {
-    final XFile? pickedFImage = await pickImage.pickImage(
-        source: ImageSource.gallery, imageQuality: 50);
-    secondImage = File(pickedFImage!.path);
-    isSDisplay = false.obs;
-    update();
-  }
-
 //>>>>>>>>>>>>>>>>>>>>add product<<<<<<<<<<<<<<<<<<<<<<<<<<<//
   addProduct(AddProductDatas productDetails) async {
     String fileName1 = productDetails.mainImage.path.split('/').last;
@@ -94,14 +68,14 @@ class ProductController extends GetxController {
     });
 
     try {
-      log('started');
       final response = await ProductServicesEndPoint().addProduct(formData);
-      log('success');
 
       if (response!.statusCode == 200 || response.statusCode == 201) {
         final datas = addProductModelFromJson(response.data);
 
         if (datas.success) {
+          Get.offAll(const ScreenProduct());
+          getDatas();
           Get.snackbar(
             'Product added  ',
             'successfully',
@@ -109,11 +83,10 @@ class ProductController extends GetxController {
             snackPosition: SnackPosition.BOTTOM,
             padding: const EdgeInsets.all(20),
           );
-          Get.offAll(const ScreenProduct());
         }
       }
     } on DioError catch (e) {
-      log(e.toString());
+      log('controller dio>>>>>>>>>$e<<<<<<<<<<<');
 
       Get.snackbar(
         'Product added failed',
@@ -123,7 +96,7 @@ class ProductController extends GetxController {
         padding: const EdgeInsets.all(20),
       );
     } catch (e) {
-      log(e.toString());
+      log('controller  catch>>>>>>>>.$e<<<<<<<<<<<<<,');
       Get.snackbar(
         'Product added failed',
         'some network issues occure',
@@ -132,6 +105,65 @@ class ProductController extends GetxController {
         padding: const EdgeInsets.all(20),
       );
     }
+  }
+
+//>>>>>>>>>>>>>>>delete product<<<<<<<<<<<<<<<<<<<<<<<//
+  deleteProduct(String? productId) async {
+    log('controller delete>>>>>>>>>>>>>>>>$productId<<<<<<<<<<<<<');
+    try {
+      final resoponse =
+          await ProductServicesEndPoint().deleteProduct(productId!);
+      log('start');
+      if (resoponse!.statusCode == 200) {
+        log('one');
+        log(resoponse.data.toString());
+        final datas = deleteProductModelFromJson(resoponse.data);
+        log('two');
+        log(datas.toString());
+        if (datas.response.acknowledged == true) {
+          Get.snackbar('product deletted', 'success fully',
+              colorText: kGreen, snackPosition: SnackPosition.BOTTOM);
+        }
+
+        getDatas();
+        log('end');
+      }
+    } catch (e) {
+      Get.snackbar('error', 'product deleteing failed',
+          colorText: kredColor, snackPosition: SnackPosition.BOTTOM);
+      log('controller catch>>>>>>>>>>>>>>>>$e<<<<<<<<<<<<<');
+    } finally {
+      Get.back();
+    }
+  }
+
+  //>>>>>>>>>>>>>>>update product<<<<<<<<<<<<<<<<<<<<<<<//
+  updateProduct() {
+
+  }
+//>>>>>>>>>>>>>>>pick images<<<<<<<<<<<<<<<<<<<<<<<//
+  pickMainImages() async {
+    final XFile? pickedFImage = await pickImage.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+    mainImage = File(pickedFImage!.path);
+    isMainDisplay = false.obs;
+    update();
+  }
+
+  pickFImages() async {
+    final XFile? pickedFImage = await pickImage.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+    firstImage = File(pickedFImage!.path);
+    isFDisplay = false.obs;
+    update();
+  }
+
+  pickSImages() async {
+    final XFile? pickedFImage = await pickImage.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+    secondImage = File(pickedFImage!.path);
+    isSDisplay = false.obs;
+    update();
   }
 
   @override

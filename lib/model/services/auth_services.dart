@@ -1,12 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:admin/view/core/url.dart';
 import 'package:dio/dio.dart';
 
 class AuthServicesEndPoint {
   final dio = Dio(
-    BaseOptions(
-        baseUrl: 'http://10.0.2.2:3000/admin/',
-        responseType: ResponseType.plain),
+    BaseOptions(baseUrl: kBaseUrl, responseType: ResponseType.plain),
   );
   Future<Response<dynamic>?> checkLogin(adminData) async {
     try {
@@ -18,6 +17,7 @@ class AuthServicesEndPoint {
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 
   Future<Response<dynamic>?> checkLogout() async {

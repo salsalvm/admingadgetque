@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:admin/view/core/url.dart';
@@ -26,12 +27,20 @@ class ProductServicesEndPoint {
       final response = await dio.post('add-product',
           data: formData, options: Options(headers: requestHeadder));
       return response;
-    } on DioError catch (e) {
-      log(e.toString());
-      
     } catch (e) {
-      log(e.toString());
+      log('service catch>>>>>>>>>>$e>>>>>>>>>>>');
     }
     return null;
+  }
+
+ Future<Response<dynamic>?> deleteProduct(String productId) async {
+    log('start service');
+    try {
+      final response = await dio.get('delete-product/$productId');
+      log('end service');
+      return response;
+    } catch (e) {
+      log('delete catch service<<<<<<<<<<<<<<<<<<<<<<<$e>>>>>>>>>>>>>>>>>');
+    }return null;
   }
 }
