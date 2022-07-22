@@ -15,70 +15,69 @@ class DropdownCategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  height: size.height * .06,
-                  decoration: BoxDecoration(
-                    color: kFormColor,
-                    borderRadius: kRAdius10,
-                  ),
-                  child:GetBuilder<CategoryController>(
-      init: CategoryController(),
-      builder: (controller) {
-        return controller.categoryNames == null
-            ? const Center(child: CircularProgressIndicator())
-            :  DropdownButton(
-                    itemHeight: 60,
-                    isDense: true,
-                    iconSize: 30,
-                    isExpanded: true,
-                    elevation: 0,
-                    alignment: Alignment.centerLeft,
-                    hint: Row(
-                      children: const [
-                        Icon(
-                          Icons.category,
-                          color: kWhiteColor,
+        child: Container(
+            padding: const EdgeInsets.all(10),
+            height: size.height * .06,
+            decoration: BoxDecoration(
+              color: kFormColor,
+              borderRadius: kRAdius10,
+            ),
+            child: GetBuilder<CategoryController>(
+              init: CategoryController(),
+              builder: (controller) {
+                return controller.categoryNames == null
+                    ? const Center(child: CircularProgressIndicator())
+                    : DropdownButton(
+                        itemHeight: 60,
+                        isDense: true,
+                        iconSize: 30,
+                        isExpanded: true,
+                        elevation: 0,
+                        alignment: Alignment.centerLeft,
+                        hint: Row(
+                          children: const [
+                            Icon(
+                              Icons.category,
+                              color: kWhiteColor,
+                            ),
+                            kWidth20,
+                            ItemText(
+                              name: 'select category...',
+                              color: kBlackColor,
+                              weight: FontWeight.normal,
+                            )
+                          ],
                         ),
-                        kWidth20,
-                        ItemText(
-                          name: 'select category...',
-                          color: kBlackColor,
-                          weight: FontWeight.normal,
-                        )
-                      ],
-                    ),
-                    value: selectedvalue,
-                    items: controller.categoryNames!.map(
-                      (category) {
-                        return DropdownMenuItem(
-                          value: category.category,
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.category,
-                                size: 22,
-                                color: kWhiteColor,
+                        value: selectedvalue,
+                        items: controller.categoryNames!.map(
+                          (category) {
+                            return DropdownMenuItem(
+                              value: category.category,
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.category,
+                                    size: 22,
+                                    color: kWhiteColor,
+                                  ),
+                                  kWidth20,
+                                  ItemText(
+                                    name: category.category ?? 'un known',
+                                    color: kBlackColor,
+                                    fontSize: 20,
+                                    weight: FontWeight.normal,
+                                  )
+                                ],
                               ),
-                              kWidth20,
-                              ItemText(
-                                name: category.category,
-                                color: kBlackColor,
-                                fontSize: 20,
-                                weight: FontWeight.normal,
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ).toList(),
-                    onChanged: (value) async {
-                      selectedvalue = value.toString();
-                      controller.update();
-                    },
-                 
-              );
-      },
-    )));
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (value) async {
+                          selectedvalue = value.toString();
+                          controller.update();
+                        },
+                      );
+              },
+            )));
   }
 }

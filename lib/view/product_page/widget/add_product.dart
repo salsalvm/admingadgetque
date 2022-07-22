@@ -2,8 +2,10 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:admin/controller/product_controller.dart';
 import 'package:admin/view/core/color.dart';
+import 'package:admin/view/core/product.enum.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/product_page/screen_product.dart';
+
 import 'package:admin/view/product_page/widget/image_add_product.dart';
 import 'package:admin/view/product_page/widget/dropdown_category.dart';
 import 'package:admin/view/widget/bottom_double_button.dart';
@@ -15,7 +17,9 @@ import 'package:get/get.dart';
 class AddProduct extends StatelessWidget {
   AddProduct({
     Key? key,
+    required this.type,
   }) : super(key: key);
+  final ProductSwitching type;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +29,12 @@ class AddProduct extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           Scaffold(
-            appBar: const PreferredSize(
-                preferredSize: Size.fromHeight(60),
+            appBar: PreferredSize(
+                preferredSize: const Size.fromHeight(60),
                 child: MainAppbar(
-                  title: 'Add Product',
+                  title: type == ProductSwitching.isAdding
+                      ? 'Add Product'
+                      : 'Edit Product',
                 )),
             backgroundColor: Colors.transparent,
             body: SafeArea(
@@ -60,7 +66,7 @@ class AddProduct extends StatelessWidget {
                                   noImage: controller.isFDisplay.value,
                                   image: controller.firstImage ??
                                       File('asset/mobile.png'),
-                                  onTap: () async {
+                                  onTap: () {
                                     controller.pickFImages();
                                   },
                                   heightI: 85,
@@ -124,49 +130,48 @@ class AddProduct extends StatelessWidget {
             ),
           ),
           BottomDoubleButton(
-              secondText: 'Add',
-              firstText: 'Cancel',
-              firstOnTap: () {
-                Get.offAll(
-                  const ScreenProduct(),
+            secondText: 'Add',
+            firstText: 'Cancel',
+            firstOnTap: () {
+              Get.offAll(
+                const ScreenProduct(),
+              );
+            },
+            secondOnTap: () {
+              final name = nameController.text.trim();
+              final desc = descController.text.trim();
+              final oPrice = oPriceController.text.trim();
+              final price = priceController.text.trim();
+              final category = selectedvalue.toString();
+              if (name.isEmpty ||
+                  controller.firstImage == null ||
+                  controller.secondImage == null ||
+                  controller.mainImage == null ||
+                  desc.isEmpty ||
+                  oPrice.isEmpty ||
+                  price.isEmpty ||
+                  category.isEmpty) {
+                Get.snackbar(
+                    snackPosition: SnackPosition.BOTTOM,
+                    'fill the field',
+                    'Every Fields Are Required',
+                    colorText: kredColor);
+                return;
+              } else {
+                final productDetails = AddProductDatas(
+                  desc: desc,
+                  oPrice: oPrice,
+                  price: price,
+                  mainImage: controller.mainImage!,
+                  fImage: controller.firstImage!,
+                  sImage: controller.secondImage!,
+                  name: name,
                 );
-              },
-              secondOnTap: () {
-                final name = nameController.text.trim();
-                final desc = descController.text.trim();
-                final oPrice = oPriceController.text.trim();
-                final price = priceController.text.trim();
-                final category = selectedvalue.toString();
-                if (name.isEmpty ||
-                    controller.firstImage == null ||
-                    controller.secondImage == null ||
-                    controller.mainImage == null ||
-                    desc.isEmpty ||
-                    oPrice.isEmpty ||
-                    price.isEmpty ||
-                    category.isEmpty) {
-                  Get.snackbar(
-                      snackPosition: SnackPosition.BOTTOM,
-                      'fill the field',
-                      'Every Fields Are Required',
-                      colorText: kredColor);
-                  return;
-                } else {
-                  final productDetails = AddProductDatas(
-                    desc: desc,
-                    oPrice: oPrice,
-                    price: price,
-                    mainImage: controller.mainImage!,
-                    fImage: controller.firstImage!,
-                    sImage: controller.secondImage!,
-                    name: name,
-                  );
 
-                  productcontroller.addProduct(
-                    productDetails,
-                  );
-                }
-              })
+                productcontroller.addProduct(productDetails);
+              }
+            },
+          )
         ],
       ),
     );

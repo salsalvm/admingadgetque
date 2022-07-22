@@ -1,0 +1,4 @@
+
+enum ProductSwitching{
+    isAdding,isEditing,
+}

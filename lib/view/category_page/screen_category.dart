@@ -26,6 +26,7 @@ class ScreenCategory extends StatelessWidget {
               children: const [
                 kHeigt5,
                 CategoryList(),
+              
               ],
             ),
           ),
@@ -36,7 +37,7 @@ class ScreenCategory extends StatelessWidget {
           buttonHeight: size.width * .13,
           text: 'Add Category',
           onTap: () {
-            Get.dialog(const AddCategory());
+            Get.dialog(AddCategory());
           },
         )
       ],

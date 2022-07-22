@@ -38,8 +38,8 @@ class Category {
     required this.category,
   });
 
-  String id;
-  String category;
+  String? id;
+  String? category;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["_id"],

@@ -18,10 +18,10 @@ class ProductServicesEndPoint {
     return response;
   }
 
+//>>>>>>>>>>>>>>>>.add product<<<<<<<<<<<<<<<<<//
   Map<String, String> requestHeadder = {
     "Content-Type": "multipart/form-data",
   };
-//>>>>>>>>>>>>>>>>.add product<<<<<<<<<<<<<<<<<//
   Future<Response<dynamic>?> addProduct(FormData formData) async {
     try {
       final response = await dio.post('add-product',
@@ -33,7 +33,7 @@ class ProductServicesEndPoint {
     return null;
   }
 
- Future<Response<dynamic>?> deleteProduct(String productId) async {
+  Future<Response<dynamic>?> deleteProduct(String productId) async {
     log('start service');
     try {
       final response = await dio.get('delete-product/$productId');
@@ -41,6 +41,7 @@ class ProductServicesEndPoint {
       return response;
     } catch (e) {
       log('delete catch service<<<<<<<<<<<<<<<<<<<<<<<$e>>>>>>>>>>>>>>>>>');
-    }return null;
+    }
+    return null;
   }
 }

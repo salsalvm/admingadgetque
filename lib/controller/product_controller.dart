@@ -109,24 +109,20 @@ class ProductController extends GetxController {
 
 //>>>>>>>>>>>>>>>delete product<<<<<<<<<<<<<<<<<<<<<<<//
   deleteProduct(String? productId) async {
-    log('controller delete>>>>>>>>>>>>>>>>$productId<<<<<<<<<<<<<');
     try {
       final resoponse =
           await ProductServicesEndPoint().deleteProduct(productId!);
-      log('start');
-      if (resoponse!.statusCode == 200) {
-        log('one');
+
+      if (resoponse!.statusCode == 200 || resoponse.statusCode == 201) {
         log(resoponse.data.toString());
         final datas = deleteProductModelFromJson(resoponse.data);
-        log('two');
-        log(datas.toString());
+
         if (datas.response.acknowledged == true) {
           Get.snackbar('product deletted', 'success fully',
               colorText: kGreen, snackPosition: SnackPosition.BOTTOM);
         }
 
         getDatas();
-        log('end');
       }
     } catch (e) {
       Get.snackbar('error', 'product deleteing failed',
@@ -138,9 +134,7 @@ class ProductController extends GetxController {
   }
 
   //>>>>>>>>>>>>>>>update product<<<<<<<<<<<<<<<<<<<<<<<//
-  updateProduct() {
-
-  }
+  updateProduct() {}
 //>>>>>>>>>>>>>>>pick images<<<<<<<<<<<<<<<<<<<<<<<//
   pickMainImages() async {
     final XFile? pickedFImage = await pickImage.pickImage(

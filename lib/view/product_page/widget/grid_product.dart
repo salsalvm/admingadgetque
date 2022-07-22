@@ -1,9 +1,12 @@
 import 'package:admin/controller/product_controller.dart';
 import 'package:admin/view/core/color.dart';
+import 'package:admin/view/core/product.enum.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/core/url.dart';
+import 'package:admin/view/product_page/screen_product.dart';
+import 'package:admin/view/product_page/widget/add_product.dart';
 import 'package:admin/view/widget/item_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +50,7 @@ class ProductGrid extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Column(
+                              // mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 CachedNetworkImage(
                                   imageUrl:
@@ -58,7 +62,7 @@ class ProductGrid extends StatelessWidget {
                                   errorWidget: (context, str, error) =>
                                       CachedNetworkImage(
                                     imageUrl:
-                                        'http://34.227.15.1/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
+                                        'http://10.0.2.2:3000/product-image/${controller.product![index].id}/${controller.product![index].imageId}_1.jpg',
                                     width: size.width * .5,
                                     height: size.width * .5,
                                     placeholder: (context, url) => const Center(
@@ -134,7 +138,9 @@ class ProductGrid extends StatelessWidget {
                           children: [
                             IconButton(
                               onPressed: () {
-                                
+                                Get.dialog(AddProduct(
+                                  type: ProductSwitching.isEditing,
+                                ));
                               },
                               icon: const Icon(
                                 Icons.edit,
