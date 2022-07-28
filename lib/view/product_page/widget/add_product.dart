@@ -1,25 +1,63 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:ui';
+import 'package:admin/controller/category_controller.dart';
 import 'package:admin/controller/product_controller.dart';
+import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/core/color.dart';
-import 'package:admin/view/core/product.enum.dart';
+import 'package:admin/view/core/enum.dart';
+import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/product_page/screen_product.dart';
-
 import 'package:admin/view/product_page/widget/image_add_product.dart';
 import 'package:admin/view/product_page/widget/dropdown_category.dart';
 import 'package:admin/view/widget/bottom_double_button.dart';
 import 'package:admin/view/widget/form_field.dart';
+import 'package:admin/view/widget/item_text.dart';
 import 'package:admin/view/widget/main_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddProduct extends StatelessWidget {
-  AddProduct({
+class AddProduct extends StatefulWidget {
+  final String? name;
+  final String? image;
+  final String? desc;
+  final String? category;
+  final String? oPrice;
+  final String? price;
+  final String? mainImage;
+  final String? fImage;
+  final String? sImage;
+  const AddProduct({
     Key? key,
     required this.type,
+    this.name,
+    this.desc,
+    this.category,
+    this.oPrice,
+    this.price,
+    this.mainImage,
+    this.fImage,
+    this.sImage,
+    this.image,
   }) : super(key: key);
-  final ProductSwitching type;
+  final ActionType type;
+
+  @override
+  State<AddProduct> createState() => _AddProductState();
+}
+
+class _AddProductState extends State<AddProduct> {
+  @override
+  void initState() {
+    if (widget.type == ActionType.isEditing) {
+      nameController.text = widget.name!;
+      descController.text = widget.desc!;
+      priceController.text = widget.price!;
+      oPriceController.text = widget.oPrice!;
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +70,7 @@ class AddProduct extends StatelessWidget {
             appBar: PreferredSize(
                 preferredSize: const Size.fromHeight(60),
                 child: MainAppbar(
-                  title: type == ProductSwitching.isAdding
+                  title: widget.type == ActionType.isAdding
                       ? 'Add Product'
                       : 'Edit Product',
                 )),
@@ -49,9 +87,16 @@ class AddProduct extends StatelessWidget {
                         children: [
                           // <<<<<<<<<<<<<<<<<<main image>>>>>>>>>>>>>>>>>>>>>
                           AddProductImage(
-                              noImage: controller.isMainDisplay.value,
-                              image: controller.mainImage ??
-                                  File('asset/mobile.png'),
+                              noImage: widget.type == ActionType.isEditing
+                                  ? false
+                                  : controller.isMainDisplay.value,
+                              image: controller.mainImage == null
+                                  ? widget.type == ActionType.isEditing
+                                      ? NetworkImage(
+                                              'http://10.0.2.2:3000/product-image/${widget.fImage}/${widget.image}_1.jpg')
+                                          as ImageProvider<Object>
+                                      : FileImage(File('asset/mobile.png'))
+                                  : FileImage(controller.mainImage!),
                               onTap: () async {
                                 controller.pickMainImages();
                               },
@@ -63,21 +108,37 @@ class AddProduct extends StatelessWidget {
                             children: [
                               // <<<<<<<<<<<<<<<<<<first image>>>>>>>>>>>>>>>>>>>>>
                               AddProductImage(
-                                  noImage: controller.isFDisplay.value,
-                                  image: controller.firstImage ??
-                                      File('asset/mobile.png'),
+                                  image: controller.firstImage == null
+                                      ? widget.type == ActionType.isEditing
+                                          ? NetworkImage(
+                                                  'http://10.0.2.2:3000/product-image/${widget.fImage}/${widget.image}_2.jpg')
+                                              as ImageProvider<Object>
+                                          : FileImage(
+                                              File('asset/mobile.png'),
+                                            )
+                                      : FileImage(controller.firstImage!),
                                   onTap: () {
                                     controller.pickFImages();
                                   },
+                                  noImage: widget.type == ActionType.isEditing
+                                      ? false
+                                      : controller.isFDisplay.value,
                                   heightI: 85,
                                   widthI: 130,
                                   widthC: 130),
                               kHeigt10,
                               // <<<<<<<<<<<<<<<<<<second image>>>>>>>>>>>>>>>>>>>>>
                               AddProductImage(
-                                  noImage: controller.isSDisplay.value,
-                                  image: controller.secondImage ??
-                                      File('asset/mobile.png'),
+                                  noImage: widget.type == ActionType.isEditing
+                                      ? false
+                                      : controller.isSDisplay.value,
+                                  image: controller.mainImage == null
+                                      ? widget.type == ActionType.isEditing
+                                          ? NetworkImage(
+                                                  'http://10.0.2.2:3000/product-image/${widget.sImage}/${widget.image}_3.jpg')
+                                              as ImageProvider<Object>
+                                          : FileImage(File('asset/mobile.png'))
+                                      : FileImage(controller.mainImage!),
                                   onTap: () async {
                                     controller.pickSImages();
                                   },
@@ -105,7 +166,84 @@ class AddProduct extends StatelessWidget {
                           name: 'discription',
                           color: kFormColor,
                           textColor: kBlack54Color),
-                      const DropdownCategoryList(),
+                      // if (widget.type == ActionType.isEditing)
+                      //   const DropdownCategoryList(),
+                      // if (widget.type == ActionType.isAdding)
+                      //   const DropdownCategoryList(),
+                      widget.type == ActionType.isEditing
+                          ? Center(
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                height: size.height * .06,
+                                decoration: BoxDecoration(
+                                  color: kFormColor,
+                                  borderRadius: kRAdius10,
+                                ),
+                                child: GetBuilder<CategoryController>(
+                                  init: CategoryController(),
+                                  builder: (controller) {
+                                    return controller.categoryNames == null
+                                        ? const Center(
+                                            child: CircularProgressIndicator())
+                                        : DropdownButton(
+                                            itemHeight: 60,
+                                            isDense: true,
+                                            iconSize: 30,
+                                            isExpanded: true,
+                                            elevation: 0,
+                                            alignment: Alignment.centerLeft,
+                                            hint: Row(
+                                              children: const [
+                                                Icon(
+                                                  Icons.category,
+                                                  color: kWhiteColor,
+                                                ),
+                                                kWidth20,
+                                                ItemText(
+                                                  name: 'select category...',
+                                                  color: kBlackColor,
+                                                  weight: FontWeight.normal,
+                                                )
+                                              ],
+                                            ),
+                                            value: selectedvalue,
+                                            items:
+                                                controller.categoryNames!.map(
+                                              (category) {
+                                                return DropdownMenuItem(
+                                                  value: category.category,
+                                                  child: Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.category,
+                                                        size: 22,
+                                                        color: kWhiteColor,
+                                                      ),
+                                                      kWidth20,
+                                                      ItemText(
+                                                        name:
+                                                            category.category ??
+                                                                'un known',
+                                                        color: kBlackColor,
+                                                        fontSize: 20,
+                                                        weight:
+                                                            FontWeight.normal,
+                                                      )
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            ).toList(),
+                                            onChanged: (value) async {
+                                              selectedvalue = value.toString();
+                                              controller.update();
+                                            },
+                                          );
+                                  },
+                                ),
+                              ),
+                            )
+                          : DropdownCategoryList(),
                       kHeigt10,
                       FormFields(
                           validator: (data) {},
@@ -178,9 +316,13 @@ class AddProduct extends StatelessWidget {
   }
 
   final nameController = TextEditingController();
+
   final descController = TextEditingController();
+
   final oPriceController = TextEditingController();
+
   final priceController = TextEditingController();
+
   final productcontroller = Get.put(ProductController());
 }
 

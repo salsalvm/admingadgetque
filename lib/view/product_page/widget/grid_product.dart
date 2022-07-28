@@ -1,5 +1,6 @@
 import 'package:admin/controller/product_controller.dart';
 import 'package:admin/view/core/color.dart';
+import 'package:admin/view/core/enum.dart';
 import 'package:admin/view/core/product.enum.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/core/space.dart';
@@ -139,7 +140,16 @@ class ProductGrid extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 Get.dialog(AddProduct(
-                                  type: ProductSwitching.isEditing,
+                                  type: ActionType.isEditing,image: controller.product![index].imageId,
+                                  mainImage: controller.product![index].id,
+                                  fImage: controller.product![index].id,
+                                  sImage: controller.product![index].id,
+                                  desc: controller.product![index].description,
+                                  oPrice:
+                                      controller.product![index].originalPrice,
+                                  price: controller.product![index].price,
+                                  name: controller.product![index].name,
+                                  category: controller.product![index].category,
                                 ));
                               },
                               icon: const Icon(

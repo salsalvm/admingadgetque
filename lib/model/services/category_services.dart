@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:admin/view/core/url.dart';
@@ -8,11 +9,13 @@ class CategoryServicesEndPoint {
   final dio = Dio(
     BaseOptions(baseUrl: kBaseUrl, responseType: ResponseType.plain),
   );
-  Future<Response<dynamic>?> checkCategory() async {
+  //------------------get-------------------//
+  Future<Response<dynamic>?> getCategory() async {
     final response = await dio.get('view-category');
     return response;
   }
 
+//------------------add-------------------//
   Map<String, dynamic> requestHeader = {"Content-Type": "multipart/form-data"};
   Future<Response<dynamic>?> addCategory(FormData formDatas) async {
     try {
@@ -25,6 +28,7 @@ class CategoryServicesEndPoint {
     return null;
   }
 
+//------------------delete-------------------//
   Future<Response<dynamic>?> deleteCategory(String categoryId) async {
     try {
       final respose = await dio.get('delete-category/?id=$categoryId');
@@ -32,6 +36,20 @@ class CategoryServicesEndPoint {
       return respose;
     } catch (e) {
       log('service delete>>>>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<');
+    }
+    return null;
+  }
+
+//------------------update-------------------//
+  Future<Response<dynamic>?> updateCategory(
+      String categoryId, FormData formData) async {
+    try {
+      final response = await dio.post('edit-category/$categoryId',
+          data: formData, options: Options(headers: requestHeader));
+      log(response.toString());
+      return response;
+    } catch (e) {
+      log('service update>>>>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<');
     }
     return null;
   }

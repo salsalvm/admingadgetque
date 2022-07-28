@@ -1,22 +1,45 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:ui';
 
 import 'package:admin/controller/category_controller.dart';
 import 'package:admin/view/core/color.dart';
+import 'package:admin/view/core/enum.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/authentication/screen_login.dart';
-import 'package:admin/view/product_page/widget/add_product.dart';
 import 'package:admin/view/product_page/widget/image_add_product.dart';
 import 'package:admin/view/widget/action_button.dart';
 import 'package:admin/view/widget/form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddCategory extends StatelessWidget {
-  AddCategory({
+class AddCategory extends StatefulWidget {
+  const AddCategory({
     Key? key,
+    this.name,
+    required this.type,
+    this.categoryId,
   }) : super(key: key);
+  final String? name;
+  final ActionType type;
+  final String? categoryId;
+
+  @override
+  State<AddCategory> createState() => _AddCategoryState();
+}
+
+class _AddCategoryState extends State<AddCategory> {
   final nameController = TextEditingController();
+
+  void nametext() {}
+  @override
+  void initState() {
+    if (widget.type == ActionType.isEditing) {
+      nameController.text = widget.name!;
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +58,19 @@ class AddCategory extends StatelessWidget {
                     AddProductImage(
                         heightI: size.height * .35,
                         widthI: size.width,
-                        image: controller.categoryImage ??
-                            File('asset/mobile.png'),
+                        image: controller.categoryImage == null
+                            ? widget.type == ActionType.isEditing
+                                ? NetworkImage(
+                                    'http://10.0.2.2:3000/category-image/${widget.categoryId}.jpg',
+                                  ) as ImageProvider<Object>
+                                : FileImage(
+                                    File("asset/mobile.png"),
+                                  )
+                            : FileImage(controller.categoryImage!),
                         widthC: size.width,
-                        noImage: controller.isErrorDisplay.value,
+                        noImage: widget.type == ActionType.isEditing
+                            ? false
+                            : controller.isErrorDisplay.value,
                         onTap: () {
                           controller.pickCategoryImage();
                         }),
@@ -67,14 +99,16 @@ class AddCategory extends StatelessWidget {
                           Get.back();
                         }),
                     ActionButton(
-                        buttonWidth: size.width * .38,
-                        buttonHeight: 40,
-                        fontColor: kWhiteColor,
-                        fontSize: 20,
-                        text: 'Add',
-                        buttonColor: kFormColor,
-                        onTap: () {
-                          final name = nameController.text.trim();
+                      buttonWidth: size.width * .38,
+                      buttonHeight: 40,
+                      fontColor: kWhiteColor,
+                      fontSize: 20,
+                      text: widget.type == ActionType.isAdding ? 'Add' : "Edit",
+                      buttonColor: kFormColor,
+                      onTap: () {
+                        final name = nameController.text.trim();
+
+                        if (widget.type == ActionType.isAdding) {
                           if (name.isEmpty ||
                               controller.categoryImage == null) {
                             Get.snackbar(
@@ -86,9 +120,12 @@ class AddCategory extends StatelessWidget {
                           } else {
                             controller.addCategory(
                                 name, controller.categoryImage!);
-                                
                           }
-                        }),
+                        } else {
+                          controller.updateCategory(widget.categoryId!, name);
+                        }
+                      },
+                    ),
                   ],
                 ),
               ],

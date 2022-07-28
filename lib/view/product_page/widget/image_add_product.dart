@@ -18,7 +18,7 @@ class AddProductImage extends StatelessWidget {
   final double heightI;
   final double widthI;
   final double widthC;
-  final File image;
+  final ImageProvider<Object> image;
   final bool noImage;
   final VoidCallback onTap;
 
@@ -39,7 +39,7 @@ class AddProductImage extends StatelessWidget {
             image: DecorationImage(
               filterQuality: FilterQuality.high,
               fit: BoxFit.fill,
-              image: FileImage(image),
+              image: image,
             ),
           ),
           child: Visibility(

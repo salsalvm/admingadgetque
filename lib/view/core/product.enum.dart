@@ -1,4 +1,1 @@
 
-enum ProductSwitching{
-    isAdding,isEditing,
-}

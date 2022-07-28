@@ -1,5 +1,7 @@
 import 'package:admin/controller/category_controller.dart';
+import 'package:admin/view/category_page/widget/add_category.dart';
 import 'package:admin/view/core/color.dart';
+import 'package:admin/view/core/enum.dart';
 import 'package:admin/view/core/radius.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/core/space.dart';
@@ -50,7 +52,16 @@ class CategoryList extends StatelessWidget {
                           label: 'Delete',
                         ),
                         SlidableAction(
-                          onPressed: (context) {},
+                          onPressed: (context) {
+                            Get.dialog(
+                              AddCategory(
+                                name:
+                                    controller.categoryNames![index].category!,
+                                type: ActionType.isEditing,
+                                categoryId: controller.categoryNames![index].id,
+                              ),
+                            );
+                          },
                           backgroundColor: kYellowColor,
                           foregroundColor: kBlackColor,
                           icon: Icons.edit,

@@ -1,46 +1,44 @@
-// To parse this JSON data, do
-//
-//     final deleteProductModel = deleteProductModelFromJson(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
-DeleteProductModel deleteProductModelFromJson(String str) => DeleteProductModel.fromJson(json.decode(str));
+DeleteProductModel deleteProductModelFromJson(String str) =>
+    DeleteProductModel.fromJson(json.decode(str));
 
-String deleteProductModelToJson(DeleteProductModel data) => json.encode(data.toJson());
+String deleteProductModelToJson(DeleteProductModel data) =>
+    json.encode(data.toJson());
 
 class DeleteProductModel {
-    DeleteProductModel({
-        required this.response,
-    });
+  DeleteProductModel({
+    required this.response,
+  });
 
-    Response response;
+  Response response;
 
-    factory DeleteProductModel.fromJson(Map<String, dynamic> json) => DeleteProductModel(
+  factory DeleteProductModel.fromJson(Map<String, dynamic> json) =>
+      DeleteProductModel(
         response: Response.fromJson(json["response"]),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "response": response.toJson(),
-    };
+      };
 }
 
 class Response {
-    Response({
-        required this.acknowledged,
-        required this.deletedCount,
-    });
+  Response({
+    required this.acknowledged,
+    required this.deletedCount,
+  });
 
-    bool acknowledged;
-    int deletedCount;
+  bool acknowledged;
+  int deletedCount;
 
-    factory Response.fromJson(Map<String, dynamic> json) => Response(
+  factory Response.fromJson(Map<String, dynamic> json) => Response(
         acknowledged: json["acknowledged"],
         deletedCount: json["deletedCount"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "acknowledged": acknowledged,
         "deletedCount": deletedCount,
-    };
+      };
 }

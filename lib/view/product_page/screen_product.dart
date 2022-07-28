@@ -1,4 +1,4 @@
-import 'package:admin/view/core/product.enum.dart';
+import 'package:admin/view/core/enum.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/product_page/widget/add_product.dart';
@@ -37,7 +37,7 @@ class ScreenProduct extends StatelessWidget {
           text: 'Add Product',
           onTap: () {
             Get.dialog(
-               AddProduct(type: ProductSwitching.isAdding),
+              AddProduct(type: ActionType.isAdding),
             );
           },
         )

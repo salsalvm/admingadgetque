@@ -1,5 +1,6 @@
 import 'package:admin/view/category_page/widget/add_category.dart';
 import 'package:admin/view/category_page/widget/category_list.dart';
+import 'package:admin/view/core/enum.dart';
 import 'package:admin/view/core/space.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/widget/action_button.dart';
@@ -26,7 +27,6 @@ class ScreenCategory extends StatelessWidget {
               children: const [
                 kHeigt5,
                 CategoryList(),
-              
               ],
             ),
           ),
@@ -37,7 +37,9 @@ class ScreenCategory extends StatelessWidget {
           buttonHeight: size.width * .13,
           text: 'Add Category',
           onTap: () {
-            Get.dialog(AddCategory());
+            Get.dialog(const AddCategory(
+              type: ActionType.isAdding,
+            ));
           },
         )
       ],

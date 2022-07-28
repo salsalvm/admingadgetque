@@ -5,14 +5,13 @@ import 'package:admin/model/add_category_model.dart';
 import 'package:admin/model/category_model.dart';
 import 'package:admin/model/delete_category.dart';
 import 'package:admin/model/services/category_services.dart';
-
+import 'package:admin/model/update_category_model.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
-
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -24,7 +23,7 @@ class CategoryController extends GetxController {
   //>>>>>>>>>>>>>>>>>>>>>>get category<<<<<<<<<<<<<<<<<<<//
   getCategory() async {
     try {
-      final response = await CategoryServicesEndPoint().checkCategory();
+      final response = await CategoryServicesEndPoint().getCategory();
 
       if (response!.statusCode == 200 || response.statusCode == 201) {
         final datas = viewCategoryModelFromJson(response.data);
@@ -34,7 +33,7 @@ class CategoryController extends GetxController {
         update();
       }
     } catch (e) {
-      log(e.toString());
+      log('get controller>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<');
     }
   }
   //>>>>>>>>>>>>>>>>>>>>>>add category<<<<<<<<<<<<<<<<<<<//
@@ -52,7 +51,9 @@ class CategoryController extends GetxController {
 
       if (response!.statusCode == 200 || response.statusCode == 201) {
         final datas = addCategoryModelFromJson(response.data);
-        if (datas.success == true) {
+        if (datas.success) {
+          getCategory();
+          update();
           Get.back();
 
           Get.snackbar(
@@ -65,13 +66,10 @@ class CategoryController extends GetxController {
           categoryImage = null;
           imageCache.clear();
           isErrorDisplay = true.obs;
-          log(categoryImage!.toString());
-          getCategory();
-          update();
         }
       }
     } catch (e) {
-      log('>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<');
+      log('add controller>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<');
     }
   }
   //>>>>>>>>>>>>>>>>>>>>>>delete category<<<<<<<<<<<<<<<<<<<//
@@ -83,12 +81,16 @@ class CategoryController extends GetxController {
 
       if (respose!.statusCode == 200 || respose.statusCode == 201) {
         final datas = deleteCategoryModelFromJson(respose.data);
-        Get.back();
-        if (datas.acknowledged == true) {
-          Get.snackbar('product deletted', 'success fully',
-              colorText: kGreen, snackPosition: SnackPosition.BOTTOM);
+
+        if (datas.acknowledged) {
+          getCategory();
+          update();
+          Get.back();
+          if (datas.acknowledged == true) {
+            Get.snackbar('product deletted', 'success fully',
+                colorText: kGreen, snackPosition: SnackPosition.BOTTOM);
+          }
         }
-        getCategory();
       }
     } catch (e) {
       log('controller delete>>>>>>>>>>>>>$e<<<<<<<<<<<<<<');
@@ -96,7 +98,37 @@ class CategoryController extends GetxController {
   }
   //>>>>>>>>>>>>>>>>>>>>>>.update category<<<<<<<<<<<<<<<<<<<//
 
-  updateCategory() {}
+  updateCategory(
+    String categoryId,
+    String catName,
+  ) async {
+    final image = await MultipartFile.fromFile(categoryImage!.path,
+        contentType: MediaType('image', 'jpg'),
+        filename: categoryImage!.path.split('/').last);
+
+    FormData formdatas = FormData.fromMap({
+      "Category": catName,
+      "Image": image,
+    });
+    try {
+      final response = await CategoryServicesEndPoint()
+          .updateCategory(categoryId, formdatas);
+
+      if (response!.statusCode == 200 || response.statusCode == 201) {
+        final datas = updateCategoryModelFromJson(response.data);
+
+        if (datas.success) {
+          getCategory();
+          update();
+          Get.back();
+          Get.snackbar('product updatted', 'success fully',
+              colorText: kGreen, snackPosition: SnackPosition.BOTTOM);
+        }
+      }
+    } catch (e) {
+      log('controller update>>>>>>>>>>>>>$e<<<<<<<<<<<<<<');
+    }
+  }
   //>>>>>>>>>>>>>>>>>>>>>>pick image<<<<<<<<<<<<<<<<<<<//
 
   pickCategoryImage() async {
