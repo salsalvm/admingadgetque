@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:admin/model/login_model.dart';
-import 'package:admin/model/services/auth_services.dart';
+import 'package:admin/services/auth_services.dart';
 import 'package:admin/view/authentication/screen_login.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/dashboard_page/screen_dashboard.dart';

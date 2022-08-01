@@ -17,7 +17,6 @@ class ScreenCategory extends StatelessWidget {
       alignment: AlignmentDirectional.bottomCenter,
       children: [
         Scaffold(
-          // backgroundColor: kBoxColor,
           appBar: const PreferredSize(
             preferredSize: Size.fromHeight(55),
             child: MainAppbar(title: 'Category'),
@@ -37,9 +36,11 @@ class ScreenCategory extends StatelessWidget {
           buttonHeight: size.width * .13,
           text: 'Add Category',
           onTap: () {
-            Get.dialog(const AddCategory(
-              type: ActionType.isAdding,
-            ));
+            Get.dialog(
+              const AddCategory(
+                type: ActionType.isAdding,
+              ),
+            );
           },
         )
       ],

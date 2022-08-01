@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:admin/model/add_product_model.dart';
 import 'package:admin/model/delete_product.dart';
 import 'package:admin/model/product_model.dart';
-import 'package:admin/model/services/product_services.dart';
+import 'package:admin/services/product_services.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:admin/view/product_page/screen_product.dart';
 import 'package:admin/view/product_page/widget/add_product.dart';

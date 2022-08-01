@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:admin/model/add_category_model.dart';
 import 'package:admin/model/category_model.dart';
 import 'package:admin/model/delete_category.dart';
-import 'package:admin/model/services/category_services.dart';
+import 'package:admin/services/category_services.dart';
 import 'package:admin/model/update_category_model.dart';
 import 'package:admin/view/core/color.dart';
 import 'package:dio/dio.dart';
