@@ -1,7 +1,6 @@
-import 'dart:convert';
 import 'dart:developer';
 
-import 'package:admin/view/core/url.dart';
+import 'package:admin/view/constants/url.dart';
 import 'package:dio/dio.dart';
 
 class ProductServicesEndPoint {
@@ -10,7 +9,7 @@ class ProductServicesEndPoint {
     responseType: ResponseType.plain,
   ));
 
-  //>>>>>>>>>>>>>>.get product<<<<<<<<<<<<<<<<<//
+  //------------------get-------------------//
   Future<Response<dynamic>?> getProductDatas() async {
     final response = await dio.get(
       '',
@@ -18,7 +17,7 @@ class ProductServicesEndPoint {
     return response;
   }
 
-//>>>>>>>>>>>>>>>>.add product<<<<<<<<<<<<<<<<<//
+  //------------------add-------------------//
   Map<String, String> requestHeadder = {
     "Content-Type": "multipart/form-data",
   };
@@ -33,6 +32,7 @@ class ProductServicesEndPoint {
     return null;
   }
 
+  //------------------delete-------------------//
   Future<Response<dynamic>?> deleteProduct(String productId) async {
     log('start service');
     try {

@@ -1,9 +1,7 @@
-import 'dart:convert';
 import 'dart:developer';
 
-import 'package:admin/view/core/url.dart';
+import 'package:admin/view/constants/url.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 class CategoryServicesEndPoint {
   final dio = Dio(
@@ -11,8 +9,13 @@ class CategoryServicesEndPoint {
   );
   //------------------get-------------------//
   Future<Response<dynamic>?> getCategory() async {
-    final response = await dio.get('view-category');
+    try {
+      final response = await dio.get('view-category');
     return response;
+    } catch (e) {
+            log('service catch>>>>>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<<<');
+
+    }return null;
   }
 
 //------------------add-------------------//

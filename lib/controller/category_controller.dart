@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:admin/model/add_category_model.dart';
-import 'package:admin/model/category_model.dart';
-import 'package:admin/model/delete_category.dart';
+import 'package:admin/model/category/add_category_model.dart';
+import 'package:admin/model/category/category_model.dart';
+import 'package:admin/model/category/delete_category.dart';
 import 'package:admin/services/category_services.dart';
-import 'package:admin/model/update_category_model.dart';
-import 'package:admin/view/core/color.dart';
+import 'package:admin/model/category/update_category_model.dart';
+import 'package:admin/view/constants/color.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
@@ -20,7 +20,7 @@ class CategoryController extends GetxController {
   File? categoryImage;
   var isErrorDisplay = true.obs;
   List<Category>? categoryNames;
-  //>>>>>>>>>>>>>>>>>>>>>>get category<<<<<<<<<<<<<<<<<<<//
+ //------------------get-------------------//
   getCategory() async {
     try {
       final response = await CategoryServicesEndPoint().getCategory();
@@ -36,7 +36,7 @@ class CategoryController extends GetxController {
       log('get controller>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<');
     }
   }
-  //>>>>>>>>>>>>>>>>>>>>>>add category<<<<<<<<<<<<<<<<<<<//
+ //------------------add-------------------//
 
   addCategory(String name, File image) async {
     final img = await MultipartFile.fromFile(image.path,
@@ -72,7 +72,7 @@ class CategoryController extends GetxController {
       log('add controller>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<');
     }
   }
-  //>>>>>>>>>>>>>>>>>>>>>>delete category<<<<<<<<<<<<<<<<<<<//
+ //------------------delete-------------------//
 
   deleteCategory(String? categoryId) async {
     try {
@@ -96,7 +96,7 @@ class CategoryController extends GetxController {
       log('controller delete>>>>>>>>>>>>>$e<<<<<<<<<<<<<<');
     }
   }
-  //>>>>>>>>>>>>>>>>>>>>>>.update category<<<<<<<<<<<<<<<<<<<//
+  //------------------update-------------------//
 
   updateCategory(
     String categoryId,

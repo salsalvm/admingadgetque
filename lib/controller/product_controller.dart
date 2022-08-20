@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'dart:io';
 
-import 'package:admin/model/add_product_model.dart';
-import 'package:admin/model/delete_product.dart';
-import 'package:admin/model/product_model.dart';
+import 'package:admin/model/product/add_product_model.dart';
+import 'package:admin/model/product/delete_product.dart';
+import 'package:admin/model/product/product_model.dart';
 import 'package:admin/services/product_services.dart';
-import 'package:admin/view/core/color.dart';
-import 'package:admin/view/product_page/screen_product.dart';
-import 'package:admin/view/product_page/widget/add_product.dart';
+import 'package:admin/view/constants/color.dart';
+import 'package:admin/view/screens/product_page/screen_product.dart';
+import 'package:admin/view/screens/product_page/widget/add_product.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
@@ -26,7 +26,7 @@ class ProductController extends GetxController {
   var isFDisplay = true.obs;
   var isSDisplay = true.obs;
   List<Product>? product;
-  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>get datas<<<<<<<<<<<<<<<<<<<<<<<<<<//
+  //------------------get-------------------//
   getDatas() async {
     try {
       final response = await ProductServicesEndPoint().getProductDatas();
@@ -43,7 +43,7 @@ class ProductController extends GetxController {
     }
   }
 
-//>>>>>>>>>>>>>>>>>>>>add product<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+ //------------------add-------------------//
   addProduct(AddProductDatas productDetails) async {
     String fileName1 = productDetails.mainImage.path.split('/').last;
     String fileName2 = productDetails.fImage.path.split('/').last;
@@ -107,7 +107,7 @@ class ProductController extends GetxController {
     }
   }
 
-//>>>>>>>>>>>>>>>delete product<<<<<<<<<<<<<<<<<<<<<<<//
+ //------------------delete-------------------//
   deleteProduct(String? productId) async {
     try {
       final resoponse =
@@ -133,9 +133,9 @@ class ProductController extends GetxController {
     }
   }
 
-  //>>>>>>>>>>>>>>>update product<<<<<<<<<<<<<<<<<<<<<<<//
+ //------------------update-------------------//
   updateProduct() {}
-//>>>>>>>>>>>>>>>pick images<<<<<<<<<<<<<<<<<<<<<<<//
+ //------------------pick images-------------------//
   pickMainImages() async {
     final XFile? pickedFImage = await pickImage.pickImage(
         source: ImageSource.gallery, imageQuality: 50);

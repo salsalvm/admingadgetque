@@ -1,5 +1,5 @@
-import 'package:admin/view/core/color.dart';
-import 'package:admin/view/authentication/screen_login.dart';
+import 'package:admin/view/constants/color.dart';
+import 'package:admin/view/screens/authentication/screen_login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
