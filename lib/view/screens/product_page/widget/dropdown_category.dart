@@ -41,7 +41,7 @@ class DropdownCategoryList extends StatelessWidget {
                           color: kWhiteColor,
                         ),
                         kWidth20,
-                        ItemText(
+                        CustomText(
                           name: 'select category...',
                           color: kBlackColor,
                           weight: FontWeight.normal,
@@ -61,7 +61,7 @@ class DropdownCategoryList extends StatelessWidget {
                                 color: kWhiteColor,
                               ),
                               kWidth20,
-                              ItemText(
+                              CustomText(
                                 name: category.category ?? 'un known',
                                 color: kBlackColor,
                                 fontSize: 20,

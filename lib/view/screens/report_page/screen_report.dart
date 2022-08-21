@@ -22,7 +22,7 @@ class ScreenReport extends StatelessWidget {
           children: [
             kHeigt20,
             const Center(
-              child: ItemText(
+              child: CustomText(
                   name: 'Sales Report On ',
                   color: kBlack54Color,
                   fontSize: 25,
@@ -32,7 +32,7 @@ class ScreenReport extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ItemText(
+                CustomText(
                   onTap: () {
                     showDatePicker(
                       context: context,
@@ -47,8 +47,8 @@ class ScreenReport extends StatelessWidget {
                   color: kBlackColor,
                   fontSize: 24,
                 ),
-                const ItemText(name: '   - to -   ', color: kBlackColor),
-                ItemText(
+                const CustomText(name: '   - to -   ', color: kBlackColor),
+                CustomText(
                     name: '29/04/2022',
                     color: kBlackColor,
                     fontSize: 24,

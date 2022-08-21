@@ -59,7 +59,7 @@ class ViewProduct extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ItemText(
+                                CustomText(
                                     name: '${product.product!.name}'
                                         .toUpperCase(),
                                     weight: FontWeight.w500,
@@ -67,7 +67,7 @@ class ViewProduct extends StatelessWidget {
                                     color: kBlackColor),
                                 kHeigt5,
                                 SizedBox(
-                                  child: ItemText(
+                                  child: CustomText(
                                       lines: 2,
                                       name: '${product.product!.description}',
                                       weight: FontWeight.w500,
@@ -75,19 +75,19 @@ class ViewProduct extends StatelessWidget {
                                       color: kBlack54Color),
                                 ),
                                 kHeigt5,
-                                ItemText(
+                                CustomText(
                                     name: '${product.product!.category}',
                                     weight: FontWeight.w500,
                                     fontSize: 18,
                                     color: kBlackColor),
                                 Row(
                                   children: [
-                                    ItemText(
+                                    CustomText(
                                         name: '${product.product!.price}',
                                         weight: FontWeight.bold,
                                         fontSize: 22,
                                         color: kGreenColor),
-                                    ItemText(
+                                    CustomText(
                                         name:
                                             '${product.product!.originalPrice}',
                                         weight: FontWeight.normal,
@@ -96,7 +96,7 @@ class ViewProduct extends StatelessWidget {
                                         color: kBlack54Color),
                                   ],
                                 ),
-                                ItemText(
+                                CustomText(
                                     name: 'Qty  :   ${product.quantity} ',
                                     weight: FontWeight.bold,
                                     fontSize: 20,

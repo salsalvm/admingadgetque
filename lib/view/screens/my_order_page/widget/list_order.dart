@@ -25,7 +25,7 @@ class OrderList extends StatelessWidget {
               )
             : controller.allOrder!.isEmpty
                 ? const Center(
-                    child: ItemText(
+                    child: CustomText(
                         name:
                             'No order\nYet find your\nstyle and shop something...',
                         weight: FontWeight.normal,
@@ -84,8 +84,9 @@ class OrderList extends StatelessWidget {
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
+                                              
                                           children: [
-                                            ItemText(
+                                            CustomText(
                                                 name: controller
                                                     .allOrder![index].userName!
                                                     .toUpperCase(),
@@ -93,7 +94,7 @@ class OrderList extends StatelessWidget {
                                                 fontSize: 16,
                                                 color: kWhiteColor),
                                             kHeigt20,
-                                            ItemText(
+                                            CustomText(
                                                 name: controller
                                                     .allOrder![index].status!
                                                     .toUpperCase(),
@@ -114,25 +115,25 @@ class OrderList extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        ItemText(
+                                        CustomText(
                                             name:
                                                 'Date ${controller.allOrder![index].date}',
                                             weight: FontWeight.bold,
                                             fontSize: 18,
                                             color: kBlackColor),
-                                        ItemText(
+                                        CustomText(
                                             name: temp.toUpperCase().trim(),
                                             lines: 2,
                                             weight: FontWeight.w500,
                                             fontSize: 18,
                                             color: kBlack54Color),
-                                        ItemText(
+                                        CustomText(
                                             name:
                                                 'Total :  ${controller.allOrder![index].totalAmount} ',
                                             weight: FontWeight.w500,
                                             fontSize: 20,
                                             color: kGreenColor),
-                                        ItemText(
+                                        CustomText(
                                             name:
                                                 'Method  : ${controller.allOrder![index].paymentMethod}',
                                             weight: FontWeight.bold,

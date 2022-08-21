@@ -198,7 +198,7 @@ class _AddProductState extends State<AddProduct> {
                                                   color: kWhiteColor,
                                                 ),
                                                 kWidth20,
-                                                ItemText(
+                                                CustomText(
                                                   name: 'select category...',
                                                   color: kBlackColor,
                                                   weight: FontWeight.normal,
@@ -219,7 +219,7 @@ class _AddProductState extends State<AddProduct> {
                                                         color: kWhiteColor,
                                                       ),
                                                       kWidth20,
-                                                      ItemText(
+                                                      CustomText(
                                                         name:
                                                             category.category ??
                                                                 'un known',

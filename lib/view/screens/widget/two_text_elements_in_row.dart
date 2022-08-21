@@ -25,14 +25,14 @@ class TextElementsInRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ItemText(
+        CustomText(
             name: firstText,
             weight: wieght,
             fontSize: fontSize,
             color: fontColor),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: paddding),
-          child: ItemText(onTap: onTap,
+          child: CustomText(onTap: onTap,
               name: secondText,
               weight: wieght,
               fontSize: fontSize,

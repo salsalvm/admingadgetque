@@ -89,7 +89,7 @@ class CategoryList extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       right: 4.0, bottom: 3),
-                                  child: ItemText(
+                                  child: CustomText(
                                       name: '${index + 1}', color: kWhiteColor),
                                 ),
                               ),
@@ -99,7 +99,7 @@ class CategoryList extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                     width: size.width * .435,
-                                    child: ItemText(
+                                    child: CustomText(
                                         name: controller.categoryNames![index]
                                                 .category ??
                                             'Un known',

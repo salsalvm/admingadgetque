@@ -15,7 +15,7 @@ class GraphScheduled extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ItemText(
+        CustomText(
           weight: FontWeight.bold,
           name: title ,
           fontSize: 22,

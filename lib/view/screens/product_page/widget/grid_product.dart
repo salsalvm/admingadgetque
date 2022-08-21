@@ -78,14 +78,14 @@ class ProductGrid extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    ItemText(
+                                    CustomText(
                                         name: controller.product![index].name!
                                             .toUpperCase(),
                                         weight: FontWeight.bold,
                                         fontSize: 18,
                                         color: kBlackColor),
                                     SizedBox(
-                                      child: ItemText(
+                                      child: CustomText(
                                           lines: 2,
                                           name: controller
                                               .product![index].description!,
@@ -94,7 +94,7 @@ class ProductGrid extends StatelessWidget {
                                           color: kBlack54Color),
                                     ),
                                     // kHeigt5,
-                                    ItemText(
+                                    CustomText(
                                         name: controller
                                             .product![index].category!,
                                         weight: FontWeight.w500,
@@ -102,7 +102,7 @@ class ProductGrid extends StatelessWidget {
                                         color: kBlackColor),
                                     Row(
                                       children: [
-                                        ItemText(
+                                        CustomText(
                                             name: controller
                                                 .product![index].originalPrice!,
                                             weight: FontWeight.bold,
@@ -112,7 +112,7 @@ class ProductGrid extends StatelessWidget {
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(top: 3.0),
-                                          child: ItemText(
+                                          child: CustomText(
                                               name: controller
                                                   .product![index].price!,
                                               weight: FontWeight.normal,

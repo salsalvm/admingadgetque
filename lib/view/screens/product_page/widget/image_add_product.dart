@@ -51,7 +51,7 @@ class AddProductImage extends StatelessWidget {
                   color: kBlack54Color,
                 ),
                   
-                ItemText(name: 'No Image', color: kGreyColor),
+                CustomText(name: 'No Image', color: kGreyColor),
               ],
             )),
           ),

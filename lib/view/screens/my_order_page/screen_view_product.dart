@@ -12,7 +12,7 @@ class ScreenViewOrder extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
-          title: const ItemText(name: 'View Product', color: kBlackColor),
+          title: const CustomText(name: 'View Product', color: kBlackColor),
           leading: IconButton(
               onPressed: () {
                 Get.back();

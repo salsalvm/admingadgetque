@@ -101,7 +101,7 @@ class AdminsList extends StatelessWidget {
                                       child: Padding(
                                         padding: const EdgeInsets.only(
                                             right: 4.0, bottom: 3),
-                                        child: ItemText(
+                                        child: CustomText(
                                             name: '${index + 1}',
                                             color: kWhiteColor),
                                       ),
@@ -113,7 +113,7 @@ class AdminsList extends StatelessWidget {
                                       children: [
                                         SizedBox(
                                           width: size.width * .4,
-                                          child: ItemText(
+                                          child: CustomText(
                                               lines: 2,
                                               name:
                                                   '${controller.users![index].name}',
@@ -122,13 +122,13 @@ class AdminsList extends StatelessWidget {
                                               color: kBlackColor),
                                         ),
                                         // kHeigt5,
-                                        ItemText(
+                                        CustomText(
                                             name:
                                                 '${controller.users![index].emailaddress}',
                                             weight: FontWeight.bold,
                                             fontSize: 20,
                                             color: kBlack54Color),
-                                        ItemText(
+                                        CustomText(
                                             name:
                                                 '+91${controller.users![index].mobile}',
                                             weight: FontWeight.bold,

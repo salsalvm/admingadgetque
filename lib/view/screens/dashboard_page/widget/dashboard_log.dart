@@ -25,9 +25,9 @@ class DashboardLog extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              ItemText(name: 'Total User', color: kWhiteColor),
+              CustomText(name: 'Total User', color: kWhiteColor),
               kHeigt10,
-              ItemText(
+              CustomText(
                 name: '1',
                 color: kWhiteColor,
                 fontSize: 25,
@@ -45,10 +45,10 @@ class DashboardLog extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              ItemText(
+              CustomText(
                   name: 'Today’s Collection', color: kWhiteColor),
               kHeigt10,
-              ItemText(
+              CustomText(
                 name: '€14,000',
                 color: kWhiteColor,
                 fontSize: 25,

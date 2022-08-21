@@ -69,20 +69,20 @@ class CouponList extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 4.0, bottom: 3),
                           child:
-                              ItemText(name: '${index + 1}', color: kWhiteColor),
+                              CustomText(name: '${index + 1}', color: kWhiteColor),
                         ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
-                          ItemText(
+                          CustomText(
                               lines: 2,
                               name: 'FLAT - 50',
                               weight: FontWeight.bold,
                               fontSize: 20,
                               color: kBlackColor),
                           kHeigt5,
-                          ItemText(
+                          CustomText(
                               lines: 2,
                               name: 'Start: 28/03/2022',
                               weight: FontWeight.w500,
@@ -98,7 +98,7 @@ class CouponList extends StatelessWidget {
                           color: kYellowColor,
                         ),
                         child: const Center(
-                            child: ItemText(fontSize: 25,name: '50%', color: kBlackColor)),
+                            child: CustomText(fontSize: 25,name: '50%', color: kBlackColor)),
                       )
                     ],
                   ),

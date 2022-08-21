@@ -65,7 +65,7 @@ class OfferProductList extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const ItemText(
+                          const CustomText(
                               name: 'Smart Watch',
                               weight: FontWeight.bold,
                               fontSize: 22,
@@ -73,7 +73,7 @@ class OfferProductList extends StatelessWidget {
                           kHeigt5,
                           SizedBox(
                             width: size.width * .435,
-                            child: const ItemText(
+                            child: const CustomText(
                                 lines: 2,
                                 name: 'Smart Watch Apple Dual core',
                                 weight: FontWeight.w500,
@@ -83,13 +83,13 @@ class OfferProductList extends StatelessWidget {
                           kHeigt5,
                           Row(
                             children: const [
-                              ItemText(
+                              CustomText(
                                   name: '€14,000',
                                   weight: FontWeight.bold,
                                   fontSize: 22,
                                   color: kBlackColor),
                               kWidth5,
-                              ItemText(
+                              CustomText(
                                   name: '€14,000',
                                   weight: FontWeight.normal,
                                   strike: TextDecoration.lineThrough,
@@ -106,7 +106,7 @@ class OfferProductList extends StatelessWidget {
                               borderRadius: kRAdius10,
                               color: kWhiteColor,
                             ),
-                            child: ItemText(
+                            child: CustomText(
                                 name: '50% off',
                                 color: kGreenColor,
                                 fontSize: 26,),
