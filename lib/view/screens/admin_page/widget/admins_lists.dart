@@ -42,10 +42,12 @@ class AdminsList extends StatelessWidget {
                                         backgroundColor: kBoxColor,
                                         buttonColor: kButtonColor,
                                         middleText: 'Do you Want to DElete',
-                                        onConfirm: () {controller.deleteAdmin(controller
+                                        onConfirm: () {
+                                          controller.deleteAdmin(controller
                                               .users![index].id
                                               .toString());
-                                          Get.back();},
+                                          Get.back();
+                                        },
                                         title: 'Are You Sure',
                                         onCancel: () {});
                                   },
@@ -60,18 +62,21 @@ class AdminsList extends StatelessWidget {
                                         backgroundColor: kBoxColor,
                                         buttonColor: kButtonColor,
                                         middleText: 'Do you Want to Block',
-                                        onConfirm: controller.users![index].userBlocked ==
-                                          true?(){
-                                             controller.unBlockAdmin(controller
-                                              .users![index].id
-                                              .toString());
-                                          Get.back();
-                                          }:() {
-                                          controller.blockAdmin(controller
-                                              .users![index].id
-                                              .toString());
-                                          Get.back();
-                                        },
+                                        onConfirm: controller.users![index]
+                                                    .userBlocked ==
+                                                true
+                                            ? () {
+                                                controller.unBlockAdmin(
+                                                    controller.users![index].id
+                                                        .toString());
+                                                Get.back();
+                                              }
+                                            : () {
+                                                controller.blockAdmin(controller
+                                                    .users![index].id
+                                                    .toString());
+                                                Get.back();
+                                              },
                                         title: 'Are You Sure',
                                         onCancel: () {});
                                   },

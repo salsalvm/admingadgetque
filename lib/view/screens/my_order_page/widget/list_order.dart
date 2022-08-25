@@ -84,7 +84,6 @@ class OrderList extends StatelessWidget {
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
-                                              
                                           children: [
                                             CustomText(
                                                 name: controller
@@ -92,7 +91,7 @@ class OrderList extends StatelessWidget {
                                                     .toUpperCase(),
                                                 weight: FontWeight.bold,
                                                 fontSize: 16,
-                                                color: kWhiteColor),
+                                                color: kBlackColor),
                                             kHeigt20,
                                             CustomText(
                                                 name: controller
@@ -100,7 +99,7 @@ class OrderList extends StatelessWidget {
                                                     .toUpperCase(),
                                                 weight: FontWeight.bold,
                                                 fontSize: 16,
-                                                color: kWhiteColor),
+                                                color: kBlackColor),
                                           ],
                                         ),
                                       ),

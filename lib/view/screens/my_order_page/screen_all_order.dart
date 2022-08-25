@@ -17,7 +17,7 @@ class ScreenOrder extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: SafeArea(
           child: ListView(
-            children:  [OrderList(), kHeigt20],
+            children: const [ OrderList(), kHeigt20],
           ),
         ),
       ),

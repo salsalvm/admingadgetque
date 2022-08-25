@@ -39,11 +39,11 @@ class ProductController extends GetxController {
         update();
       }
     } catch (e) {
-      log(e.toString());
+      log('get>>>>>>>>>$e<<<<<<<<<<<');
     }
   }
 
- //------------------add-------------------//
+  //------------------add-------------------//
   addProduct(AddProductDatas productDetails) async {
     String fileName1 = productDetails.mainImage.path.split('/').last;
     String fileName2 = productDetails.fImage.path.split('/').last;
@@ -107,7 +107,7 @@ class ProductController extends GetxController {
     }
   }
 
- //------------------delete-------------------//
+  //------------------delete-------------------//
   deleteProduct(String? productId) async {
     try {
       final resoponse =
@@ -133,9 +133,9 @@ class ProductController extends GetxController {
     }
   }
 
- //------------------update-------------------//
+  //------------------update-------------------//
   updateProduct() {}
- //------------------pick images-------------------//
+  //------------------pick images-------------------//
   pickMainImages() async {
     final XFile? pickedFImage = await pickImage.pickImage(
         source: ImageSource.gallery, imageQuality: 50);
