@@ -5,11 +5,8 @@ import 'package:admin/view/screens/admin_page/screen_admin.dart';
 import 'package:admin/view/screens/authentication/screen_login.dart';
 import 'package:admin/view/screens/authentication/widget/login_appbar.dart';
 import 'package:admin/view/screens/category_page/screen_category.dart';
-import 'package:admin/view/screens/coupon_page/screen_coupon.dart';
 import 'package:admin/view/screens/my_order_page/screen_all_order.dart';
-import 'package:admin/view/screens/offer_product_page/screen_offer_product.dart';
 import 'package:admin/view/screens/product_page/screen_product.dart';
-import 'package:admin/view/screens/report_page/screen_report.dart';
 import 'package:admin/view/screens/widget/action_button.dart';
 import 'package:admin/view/screens/widget/my_tile.dart';
 import 'package:flutter/material.dart';
@@ -71,27 +68,27 @@ class DrawerList extends StatelessWidget {
               Get.to(const ScreenOrder());
             },
           ),
-          MyTile(
-            icon: Icons.free_cancellation,
-            title: 'Product Offer',
-            onTap: () {
-              Get.to(const ScreenOfferProduct());
-            },
-          ),
-          MyTile(
-            icon: Icons.local_offer_sharp,
-            title: 'Coupon',
-            onTap: () {
-              Get.to(const ScreenCoupon());
-            },
-          ),
-          MyTile(
-            icon: Icons.report,
-            title: 'Report',
-            onTap: () {
-              Get.to(const ScreenReport());
-            },
-          ),
+          // MyTile(
+          //   icon: Icons.free_cancellation,
+          //   title: 'Product Offer',
+          //   onTap: () {
+          //     Get.to(const ScreenOfferProduct());
+          //   },
+          // ),
+          // MyTile(
+          //   icon: Icons.local_offer_sharp,
+          //   title: 'Coupon',
+          //   onTap: () {
+          //     Get.to(const ScreenCoupon());
+          //   },
+          // ),
+          // MyTile(
+          //   icon: Icons.report,
+          //   title: 'Report',
+          //   onTap: () {
+          //     Get.to(const ScreenReport());
+          //   },
+          // ),
           const Spacer(),
           ActionButton(
               buttonWidth: size.width,
