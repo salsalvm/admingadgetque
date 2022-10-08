@@ -20,7 +20,7 @@ class CategoryController extends GetxController {
   File? categoryImage;
   var isErrorDisplay = true.obs;
   List<Category>? categoryNames;
- //------------------get-------------------//
+  //------------------get-------------------//
   getCategory() async {
     try {
       final response = await CategoryServicesEndPoint().getCategory();
@@ -36,7 +36,7 @@ class CategoryController extends GetxController {
       log('get controller>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<');
     }
   }
- //------------------add-------------------//
+  //------------------add-------------------//
 
   addCategory(String name, File image) async {
     final img = await MultipartFile.fromFile(image.path,
@@ -72,7 +72,7 @@ class CategoryController extends GetxController {
       log('add controller>>>>>>>>>>>>>>$e<<<<<<<<<<<<<<<<');
     }
   }
- //------------------delete-------------------//
+  //------------------delete-------------------//
 
   deleteCategory(String? categoryId) async {
     try {
@@ -98,10 +98,7 @@ class CategoryController extends GetxController {
   }
   //------------------update-------------------//
 
-  updateCategory(
-    String categoryId,
-    String catName,
-  ) async {
+  updateCategory(String categoryId, String catName) async {
     final image = await MultipartFile.fromFile(categoryImage!.path,
         contentType: MediaType('image', 'jpg'),
         filename: categoryImage!.path.split('/').last);

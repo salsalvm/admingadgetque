@@ -30,7 +30,6 @@ class AddCategory extends StatefulWidget {
 class _AddCategoryState extends State<AddCategory> {
   final nameController = TextEditingController();
 
-  void nametext() {}
   @override
   void initState() {
     if (widget.type == ActionType.isEditing) {
